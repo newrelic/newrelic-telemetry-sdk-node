@@ -36,9 +36,5 @@
     "typescript": "^3.3.3"
   },
   "dependencies": {
-    "@types/json-stringify-safe": "^5.0.0",
-    "@types/pino": "^5.8.5",
-    "json-stringify-safe": "^5.0.1",
-    "pino": "^5.11.1"
   }
 }
