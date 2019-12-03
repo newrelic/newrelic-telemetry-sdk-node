@@ -3,6 +3,9 @@ version: 2.1
 workflows:
   main:
     jobs:
+      - build:
+          version: 12
+          name: "Build (Node 12)"
       - lint:
           version: 12
           name: "Lint (Node 12)"
@@ -17,6 +20,20 @@ workflows:
           name: "Integration (Node 12)"
 
 jobs:
+  build:
+    parameters:
+      version:
+        type: integer
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: "Build (Node << parameters.version >>)"
+          command: |
+            npm install
+            npm run build
+
   lint:
     parameters:
       version:
