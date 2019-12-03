@@ -1,0 +1,66 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": false
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["off", 2, {"SwitchCase": 1}],
+    "@typescript-eslint/indent": ["error", 2, {"SwitchCase": 1}],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none"
+        }
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": ["off"],
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": ["warn", { "properties": "never" }],
+    "brace-style": "error",
+    "comma-dangle": "off",
+    "comma-style": ["error", "last"],
+    "curly": "off",
+    "eol-last": "error",
+    "eqeqeq": ["error", "smart"],
+    "dot-notation": "error",
+    "guard-for-in": "error",
+    "key-spacing": ["warn", { "beforeColon": false }],
+    "max-len": ["error", 90, { "ignoreUrls": true }],
+    "max-nested-callbacks": ["error", 3],
+    "max-params": ["error", 5],
+    "new-cap": "error",
+    "no-console": "warn",
+    "no-debugger": "error",
+    "no-else-return": "error",
+    "no-floating-decimal": "error",
+    "no-lonely-if": "error",
+    "no-multiple-empty-lines": "error",
+    "no-multi-spaces": ["off", { "ignoreEOLComments": true }],
+    "no-new": "error",
+    "no-new-func": "error",
+    "no-shadow": ["warn", {"allow": ["t"]}],
+    "no-unused-vars": "off",
+    "one-var": ["error", "never"],
+    "padded-blocks": ["error", "never"],
+    "radix": "error",
+    "semi": ["error", "never"],
+    "space-before-function-paren": ["error", "never"],
+    "keyword-spacing": "error",
+    "space-before-blocks": "error",
+    "space-infix-ops": "error",
+    "spaced-comment": "error",
+    "space-unary-ops": "error",
+    "quote-props": ["error", "consistent-as-needed"],
+    "quotes": ["error", "single", {"allowTemplateLiterals": true}],
+    "wrap-iife": "error"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@newrelic/telemetry-sdk",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/src",
+    "dist/index.*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint 'index.ts' 'src/**' 'tests/**'",
+    "prepare": "npm run build",
+    "unit": "ts-node ./node_modules/.bin/tape tests/unit/**/*.tap.ts",
+    "integration": "ts-node ./node_modules/.bin/tape tests/integration/**/*.tap.ts",
+    "test": "npm run build && npm run unit && npm run integration"
+  },
+  "author": "New Relic Node.js Agent Team <nodejs@newrelic.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/newrelic/newrelic-telemetry-sdk-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/newrelic/newrelic-telemetry-sdk-node.git"
+  },
+  "devDependencies": {
+    "@types/nock": "^9.3.1",
+    "@types/sinon": "^7.0.8",
+    "@types/tape": "^4.2.33",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "eslint": "^5.14.1",
+    "nock": "^10.0.6",
+    "sinon": "^7.2.5",
+    "tape": "^4.10.1",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@types/json-stringify-safe": "^5.0.0",
+    "@types/pino": "^5.8.5",
+    "json-stringify-safe": "^5.0.1",
+    "pino": "^5.11.1"
+  }
+}

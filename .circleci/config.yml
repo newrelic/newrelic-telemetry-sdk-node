@@ -1,0 +1,46 @@
+version: 2.1
+
+workflows:
+  main:
+    jobs:
+      - lint:
+          version: 12
+          name: "Lint (Node 12)"
+      - integration-tests:
+          version: 8
+          name: "Integration (Node 8)"
+      - integration-tests:
+          version: 10
+          name: "Integration (Node 10)"
+      - integration-tests:
+          version: 12
+          name: "Integration (Node 12)"
+
+jobs:
+  lint:
+    parameters:
+      version:
+        type: integer
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: "Lint (Node << parameters.version >>)"
+          command: |
+            npm install
+            npm run lint
+
+  integration-tests:
+    parameters:
+      version:
+        type: integer
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: "Integration Tests (Node << parameters.version >>)"
+          command: |
+            npm install
+            npm run integration
