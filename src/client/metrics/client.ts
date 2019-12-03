@@ -1,12 +1,12 @@
 import { BaseClient, SendDataOptions, SendDataCallback } from '../base-client'
 import { MetricBatch } from './batch'
 
-const METRIC_HOST = 'staging-metric-api.newrelic.com'
+const METRIC_HOST = 'metric-api.newrelic.com'
 const METRIC_PATH = '/metric/v1'
 const INVALID_KEY_MESSAGE = 'A valid key must be provided for inserting metrics.'
 
 export interface MetricClientOptions {
-  insertKey: string
+  apiKey: string
   host?: string
 }
 
@@ -17,10 +17,10 @@ export class MetricClient extends BaseClient<MetricBatch>  {
   public constructor(options: MetricClientOptions) {
     super()
 
-    this._hasValidKey = this._isValidKey(options && options.insertKey)
+    this._hasValidKey = this._isValidKey(options && options.apiKey)
 
     const headers = {
-      'X-Insert-Key': options && options.insertKey
+      'Api-Key': options && options.apiKey
     }
 
     this._sendDataOptions = {

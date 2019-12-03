@@ -12,12 +12,12 @@ import {
 } from '../../src/client/metrics'
 
 const metricConfig: MetricClientOptions = {
-  insertKey: process.env.TEST_INSERT_KEY,
+  apiKey: process.env.TEST_API_KEY,
   host: process.env.TEST_METRIC_HOST || 'staging-metric-api.newrelic.com'
 }
 
 test('Metric Client Integration Tests', (t): void => {
-  t.ok(metricConfig.insertKey, 'TEST_INSERT_KEY must be configured for tests')
+  t.ok(metricConfig.apiKey, 'TEST_API_KEY must be configured for tests')
 
   t.test('Should send batch of individually added summary metrics', (t): void => {
     const batch = new MetricBatch({ test: true }, Date.now(), 1000)
