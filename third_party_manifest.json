@@ -1,0 +1,142 @@
+{
+  "lastUpdated": "Tue Dec 03 2019 14:11:03 GMT-0800 (Pacific Standard Time)",
+  "projectName": "@newrelic/telemetry-sdk",
+  "projectUrl": "https://github.com/newrelic/newrelic-telemetry-sdk-node/",
+  "includeDev": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@types/nock@9.3.1": {
+      "name": "@types/nock",
+      "version": "9.3.1",
+      "range": "^9.3.1",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
+      "licenseFile": "node_modules/@types/nock/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "@types/sinon@7.5.1": {
+      "name": "@types/sinon",
+      "version": "7.5.1",
+      "range": "^7.0.8",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
+      "licenseFile": "node_modules/@types/sinon/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "@types/tape@4.2.33": {
+      "name": "@types/tape",
+      "version": "4.2.33",
+      "range": "^4.2.33",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
+      "licenseFile": "node_modules/@types/tape/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "@typescript-eslint/eslint-plugin@1.13.0": {
+      "name": "@typescript-eslint/eslint-plugin",
+      "version": "1.13.0",
+      "range": "^1.4.2",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/typescript-eslint/typescript-eslint",
+      "versionedRepoUrl": "https://github.com/typescript-eslint/typescript-eslint/tree/v1.13.0",
+      "licenseFile": "node_modules/@typescript-eslint/eslint-plugin/LICENSE",
+      "licenseUrl": "https://github.com/typescript-eslint/typescript-eslint/blob/v1.13.0/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "@typescript-eslint/parser@1.13.0": {
+      "name": "@typescript-eslint/parser",
+      "version": "1.13.0",
+      "range": "^1.4.2",
+      "licenses": "BSD-2-Clause",
+      "repoUrl": "https://github.com/typescript-eslint/typescript-eslint",
+      "versionedRepoUrl": "https://github.com/typescript-eslint/typescript-eslint/tree/v1.13.0",
+      "licenseFile": "node_modules/@typescript-eslint/parser/LICENSE",
+      "licenseUrl": "https://github.com/typescript-eslint/typescript-eslint/blob/v1.13.0/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "eslint@5.16.0": {
+      "name": "eslint",
+      "version": "5.16.0",
+      "range": "^5.14.1",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/eslint/eslint",
+      "versionedRepoUrl": "https://github.com/eslint/eslint/tree/v5.16.0",
+      "licenseFile": "node_modules/eslint/LICENSE",
+      "licenseUrl": "https://github.com/eslint/eslint/blob/v5.16.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Nicholas C. Zakas",
+      "email": "nicholas+npm@nczconsulting.com"
+    },
+    "nock@10.0.6": {
+      "name": "nock",
+      "version": "10.0.6",
+      "range": "^10.0.6",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/nock/nock",
+      "versionedRepoUrl": "https://github.com/nock/nock/tree/v10.0.6",
+      "licenseFile": "node_modules/nock/LICENSE",
+      "licenseUrl": "https://github.com/nock/nock/blob/v10.0.6/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Pedro Teixeira",
+      "email": "pedro.teixeira@gmail.com"
+    },
+    "sinon@7.5.0": {
+      "name": "sinon",
+      "version": "7.5.0",
+      "range": "^7.2.5",
+      "licenses": "BSD-3-Clause",
+      "repoUrl": "https://github.com/sinonjs/sinon",
+      "versionedRepoUrl": "https://github.com/sinonjs/sinon/tree/v7.5.0",
+      "licenseFile": "node_modules/sinon/LICENSE",
+      "licenseUrl": "https://github.com/sinonjs/sinon/blob/v7.5.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Christian Johansen"
+    },
+    "tape@4.11.0": {
+      "name": "tape",
+      "version": "4.11.0",
+      "range": "^4.10.1",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/substack/tape",
+      "versionedRepoUrl": "https://github.com/substack/tape/tree/v4.11.0",
+      "licenseFile": "node_modules/tape/LICENSE",
+      "licenseUrl": "https://github.com/substack/tape/blob/v4.11.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "James Halliday",
+      "email": "mail@substack.net",
+      "url": "http://substack.net"
+    },
+    "ts-node@8.5.4": {
+      "name": "ts-node",
+      "version": "8.5.4",
+      "range": "^8.0.2",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/TypeStrong/ts-node",
+      "versionedRepoUrl": "https://github.com/TypeStrong/ts-node/tree/v8.5.4",
+      "licenseFile": "node_modules/ts-node/LICENSE",
+      "licenseUrl": "https://github.com/TypeStrong/ts-node/blob/v8.5.4/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Blake Embrey",
+      "email": "hello@blakeembrey.com",
+      "url": "http://blakeembrey.me"
+    },
+    "typescript@3.7.2": {
+      "name": "typescript",
+      "version": "3.7.2",
+      "range": "^3.3.3",
+      "licenses": "Apache-2.0",
+      "repoUrl": "https://github.com/Microsoft/TypeScript",
+      "versionedRepoUrl": "https://github.com/Microsoft/TypeScript/tree/v3.7.2",
+      "licenseFile": "node_modules/typescript/LICENSE.txt",
+      "licenseUrl": "https://github.com/Microsoft/TypeScript/blob/v3.7.2/LICENSE.txt",
+      "licenseTextSource": "file",
+      "publisher": "Microsoft Corp."
+    }
+  }
+}
