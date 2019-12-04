@@ -1,32 +1,10 @@
 {
-  "lastUpdated": "Tue Dec 03 2019 14:11:03 GMT-0800 (Pacific Standard Time)",
+  "lastUpdated": "Wed Dec 04 2019 11:39:41 GMT-0800 (Pacific Standard Time)",
   "projectName": "@newrelic/telemetry-sdk",
   "projectUrl": "https://github.com/newrelic/newrelic-telemetry-sdk-node/",
   "includeDev": true,
   "dependencies": {},
   "devDependencies": {
-    "@types/nock@9.3.1": {
-      "name": "@types/nock",
-      "version": "9.3.1",
-      "range": "^9.3.1",
-      "licenses": "MIT",
-      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
-      "licenseFile": "node_modules/@types/nock/LICENSE",
-      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
-      "licenseTextSource": "file"
-    },
-    "@types/sinon@7.5.1": {
-      "name": "@types/sinon",
-      "version": "7.5.1",
-      "range": "^7.0.8",
-      "licenses": "MIT",
-      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
-      "licenseFile": "node_modules/@types/sinon/LICENSE",
-      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
-      "licenseTextSource": "file"
-    },
     "@types/tape@4.2.33": {
       "name": "@types/tape",
       "version": "4.2.33",
@@ -72,31 +50,6 @@
       "licenseTextSource": "file",
       "publisher": "Nicholas C. Zakas",
       "email": "nicholas+npm@nczconsulting.com"
-    },
-    "nock@10.0.6": {
-      "name": "nock",
-      "version": "10.0.6",
-      "range": "^10.0.6",
-      "licenses": "MIT",
-      "repoUrl": "https://github.com/nock/nock",
-      "versionedRepoUrl": "https://github.com/nock/nock/tree/v10.0.6",
-      "licenseFile": "node_modules/nock/LICENSE",
-      "licenseUrl": "https://github.com/nock/nock/blob/v10.0.6/LICENSE",
-      "licenseTextSource": "file",
-      "publisher": "Pedro Teixeira",
-      "email": "pedro.teixeira@gmail.com"
-    },
-    "sinon@7.5.0": {
-      "name": "sinon",
-      "version": "7.5.0",
-      "range": "^7.2.5",
-      "licenses": "BSD-3-Clause",
-      "repoUrl": "https://github.com/sinonjs/sinon",
-      "versionedRepoUrl": "https://github.com/sinonjs/sinon/tree/v7.5.0",
-      "licenseFile": "node_modules/sinon/LICENSE",
-      "licenseUrl": "https://github.com/sinonjs/sinon/blob/v7.5.0/LICENSE",
-      "licenseTextSource": "file",
-      "publisher": "Christian Johansen"
     },
     "tape@4.11.0": {
       "name": "tape",
