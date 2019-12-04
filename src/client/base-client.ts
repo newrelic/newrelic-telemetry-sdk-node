@@ -71,8 +71,9 @@ export abstract class BaseClient<T> {
       const headers: OutgoingHttpHeaders = sendOptions.headers || {}
       Object.assign(headers, _defaultHeaders)
 
+      headers.Host = sendOptions.host
       headers['Content-Encoding'] = 'gzip'
-      headers['Content-Length'] = String(compressed.length)
+      headers['Content-Length'] = compressed.length
       headers['User-Agent'] = this.getUserAgentHeaderValue(
         'NewRelic-nodejs-TelemetrySDK',
         require('../../package.json').version
@@ -80,7 +81,7 @@ export abstract class BaseClient<T> {
 
       const options: RequestOptions = {
         method: HTTP_METHOD,
-        setHost: true,
+        setHost: false, // Valid Node 9+, defaults true. Manually set header for Node 8+.
         host: sendOptions.host,
         port: sendOptions.port,
         path: url.format({pathname: sendOptions.pathname, query: sendOptions.query}),
@@ -93,10 +94,12 @@ export abstract class BaseClient<T> {
       })
 
       req.on('response', (res: IncomingMessage): void => {
+        res.setEncoding('utf8')
+
         let rawBody = ''
 
-        res.on('data', (data: Buffer): void => {
-          rawBody += data.toString('utf8')
+        res.on('data', (data: string): void => {
+          rawBody += data
         })
 
         res.on('error', (error): void => {
