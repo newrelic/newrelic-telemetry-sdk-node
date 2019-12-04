@@ -24,12 +24,14 @@
   },
   "devDependencies": {
     "@types/tape": "^4.2.33",
+    "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "eslint": "^5.14.1",
     "tape": "^4.10.1",
     "ts-node": "^8.0.2",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3",
+    "uuid": "^3.3.3"
   },
   "dependencies": {}
 }

@@ -1,6 +1,7 @@
 // TODO: placeholder until we focus on full implementation
 
 import test from 'tape'
+import uuidv4 from 'uuid/v4'
 
 import {
   SpanClient,
@@ -23,7 +24,7 @@ test('Span Client Integration Tests', (t): void => {
     const batch = new SpanBatch()
 
     const span1: Span = {
-      id: Date.now().toString(), // TODO: Generate real GUID
+      id: uuidv4(),
       'trace.id': traceId,
       timestamp: Date.now(),
       attributes: {
@@ -34,7 +35,7 @@ test('Span Client Integration Tests', (t): void => {
     }
 
     const span2: Span = {
-      id: Date.now().toString(),
+      id: uuidv4(),
       'trace.id': traceId,
       timestamp: Date.now(),
       attributes: {

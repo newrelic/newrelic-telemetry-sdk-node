@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Wed Dec 04 2019 11:39:41 GMT-0800 (Pacific Standard Time)",
+  "lastUpdated": "Wed Dec 04 2019 14:00:01 GMT-0800 (Pacific Standard Time)",
   "projectName": "@newrelic/telemetry-sdk",
   "projectUrl": "https://github.com/newrelic/newrelic-telemetry-sdk-node/",
   "includeDev": true,
@@ -13,6 +13,17 @@
       "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
       "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
       "licenseFile": "node_modules/@types/tape/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "@types/uuid@3.4.6": {
+      "name": "@types/uuid",
+      "version": "3.4.6",
+      "range": "^3.4.6",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
+      "licenseFile": "node_modules/@types/uuid/LICENSE",
       "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
       "licenseTextSource": "file"
     },
@@ -90,6 +101,17 @@
       "licenseUrl": "https://github.com/Microsoft/TypeScript/blob/v3.7.2/LICENSE.txt",
       "licenseTextSource": "file",
       "publisher": "Microsoft Corp."
+    },
+    "uuid@3.3.3": {
+      "name": "uuid",
+      "version": "3.3.3",
+      "range": "^3.3.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/kelektiv/node-uuid",
+      "versionedRepoUrl": "https://github.com/kelektiv/node-uuid/tree/v3.3.3",
+      "licenseFile": "node_modules/uuid/LICENSE.md",
+      "licenseUrl": "https://github.com/kelektiv/node-uuid/blob/v3.3.3/LICENSE.md",
+      "licenseTextSource": "file"
     }
   }
 }
