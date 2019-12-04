@@ -24,22 +24,22 @@ test('Span Client Integration Tests', (t): void => {
     const batch = new SpanBatch()
 
     const span1: Span = {
-      id: uuidv4(),
+      'id': uuidv4(),
       'trace.id': traceId,
-      timestamp: Date.now(),
-      attributes: {
-        name: 'firstTest',
+      'timestamp': Date.now(),
+      'attributes': {
+        'name': 'firstTest',
         'service.name': 'node-sdk-test-entity',
         'duration.ms': 10,
       }
     }
 
     const span2: Span = {
-      id: uuidv4(),
+      'id': uuidv4(),
       'trace.id': traceId,
-      timestamp: Date.now(),
-      attributes: {
-        name: 'childTest',
+      'timestamp': Date.now(),
+      'attributes': {
+        'name': 'childTest',
         'service.name': 'node-sdk-test-entity',
         'duration.ms': 10,
         'parent.id': span1.id
