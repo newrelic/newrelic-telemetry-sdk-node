@@ -51,12 +51,13 @@ export abstract class BaseClient<T> {
       const headers: OutgoingHttpHeaders = sendOptions.headers || {}
       Object.assign(headers, _defaultHeaders)
 
+      headers.Host = sendOptions.host
       headers['Content-Encoding'] = 'gzip'
       headers['Content-Length'] = String(compressed.length)
 
       const options: RequestOptions = {
         method: HTTP_METHOD,
-        setHost: true,
+        setHost: false, // Valid Node 9+, defaults true. Manually set header for Node 8+.
         host: sendOptions.host,
         port: sendOptions.port,
         path: url.format({pathname: sendOptions.pathname, query: sendOptions.query}),
