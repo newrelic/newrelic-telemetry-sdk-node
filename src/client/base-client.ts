@@ -53,7 +53,7 @@ export abstract class BaseClient<T> {
 
       headers.Host = sendOptions.host
       headers['Content-Encoding'] = 'gzip'
-      headers['Content-Length'] = String(compressed.length)
+      headers['Content-Length'] = compressed.length
 
       const options: RequestOptions = {
         method: HTTP_METHOD,
@@ -70,10 +70,12 @@ export abstract class BaseClient<T> {
       })
 
       req.on('response', (res: IncomingMessage): void => {
+        res.setEncoding('utf8')
+
         let rawBody = ''
 
-        res.on('data', (data: Buffer): void => {
-          rawBody += data.toString('utf8')
+        res.on('data', (data: string): void => {
+          rawBody += data
         })
 
         res.on('error', (error): void => {
