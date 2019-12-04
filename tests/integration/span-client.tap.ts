@@ -14,7 +14,7 @@ const spanConfig: SpanClientOptions = {
   host: process.env.TEST_SPAN_HOST || 'staging-collector.newrelic.com'
 }
 
-test('Span Client Integration Tests', (t): void => {
+test('Span Client Integration Tests', {skip: true}, (t): void => {
   t.ok(spanConfig.licenseKey, 'TEST_LICENSE_KEY must be configured for tests')
 
   t.test('Should send batch of individually added spans', (t): void => {
