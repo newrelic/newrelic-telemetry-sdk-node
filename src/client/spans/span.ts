@@ -1,11 +1,13 @@
+export interface Attributes {
+  'duration.ms'?: number
+  name?: string
+  'parent.id'?: string
+  'service.name'?: string
+}
 
 export interface Span {
-  guid: string
-  name: string
-  entityName: string
-  traceId: string
+  id: string
+  'trace.id': string
   timestamp: number
-  durationMs: number
-  tags?: {[key: string]: string | boolean | number}
-  parentId?: string
+  attributes?: Attributes
 }

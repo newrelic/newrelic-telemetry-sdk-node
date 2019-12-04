@@ -1,13 +1,14 @@
 import { BaseClient, SendDataOptions, SendDataCallback } from '../base-client'
 import { SpanBatch } from './batch'
 
-const SPAN_HOST = 'staging-collector.newrelic.com'
-const SPAN_METHOD_NAME = 'external_span_data'
-const RAW_METHOD_PATH = '/agent_listener/invoke_raw_method'
+const SPAN_HOST = 'trace-api.newrelic.com/trace/v1'
+const SPAN_PATH = '/trace/v1'
+const SPAN_DATA_FORMAT = 'newrelic'
+const SPAN_DATA_FORMAT_VERSION = 1
 const INVALID_KEY_MESSAGE = 'A valid key must be provided for inserting spans.'
 
 export interface SpanClientOptions {
-  licenseKey: string
+  apiKey: string
   host?: string
 }
 
@@ -18,19 +19,19 @@ export class SpanClient extends BaseClient<SpanBatch> {
   public constructor(options: SpanClientOptions) {
     super()
 
-    this._hasValidKey = this._isValidKey(options && options.licenseKey)
+    this._hasValidKey = this._isValidKey(options && options.apiKey)
 
-    const query = {
-      protocol_version: 1,
-      license_key: options && options.licenseKey,
-      method: SPAN_METHOD_NAME
+    const headers = {
+      'Api-Key': options && options.apiKey,
+      'Data-Format': SPAN_DATA_FORMAT,
+      'Data-Format-Version': SPAN_DATA_FORMAT_VERSION,
     }
 
     this._sendDataOptions = {
+      headers: headers,
       host: (options && options.host) || SPAN_HOST,
-      port: 443,
-      pathname: RAW_METHOD_PATH,
-      query
+      pathname: SPAN_PATH,
+      port: 443
     }
   }
 
@@ -44,7 +45,7 @@ export class SpanClient extends BaseClient<SpanBatch> {
       callback(keyError, null, null)
     }
 
-    const payload = `${JSON.stringify(data)}`
+    const payload = `[${JSON.stringify(data)}]`
 
     this._sendData(this._sendDataOptions, payload, callback)
   }

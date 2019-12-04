@@ -10,12 +10,12 @@ import {
 } from '../../src/client/spans'
 
 const spanConfig: SpanClientOptions = {
-  licenseKey: process.env.TEST_LICENSE_KEY,
-  host: process.env.TEST_SPAN_HOST || 'staging-collector.newrelic.com'
+  apiKey: process.env.TEST_API_KEY,
+  host: process.env.TEST_SPAN_HOST || 'staging-trace-api.newrelic.com'
 }
 
-test('Span Client Integration Tests', {skip: true}, (t): void => {
-  t.ok(spanConfig.licenseKey, 'TEST_LICENSE_KEY must be configured for tests')
+test('Span Client Integration Tests', (t): void => {
+  t.ok(spanConfig.apiKey, 'TEST_LICENSE_KEY must be configured for tests')
 
   t.test('Should send batch of individually added spans', (t): void => {
     const traceId = Date.now().toString()
@@ -23,22 +23,26 @@ test('Span Client Integration Tests', {skip: true}, (t): void => {
     const batch = new SpanBatch()
 
     const span1: Span = {
-      guid: Date.now().toString(), // TODO: Generate real GUID
-      name: 'firstTest',
-      entityName: 'test-entity',
-      traceId: traceId,
+      id: Date.now().toString(), // TODO: Generate real GUID
+      'trace.id': traceId,
       timestamp: Date.now(),
-      durationMs: 10,
+      attributes: {
+        name: 'firstTest',
+        'service.name': 'node-sdk-test-entity',
+        'duration.ms': 10,
+      }
     }
 
     const span2: Span = {
-      guid: Date.now().toString(),
-      name: 'childTest',
-      entityName: 'test-entity',
-      traceId: traceId,
+      id: Date.now().toString(),
+      'trace.id': traceId,
       timestamp: Date.now(),
-      durationMs: 10,
-      parentId: span1.guid
+      attributes: {
+        name: 'childTest',
+        'service.name': 'node-sdk-test-entity',
+        'duration.ms': 10,
+        'parent.id': span1.id
+      }
     }
 
     batch.addSpan(span1)
@@ -51,7 +55,7 @@ test('Span Client Integration Tests', {skip: true}, (t): void => {
       t.ok(res)
       t.ok(body)
 
-      t.equal(res.statusCode, 200)
+      t.equal(res.statusCode, 202)
       t.end()
     })
   })
