@@ -5,10 +5,12 @@ class MockBatch {
 }
 
 class MockClient extends BaseClient<MockBatch> {
-  public send(data: MockBatch, callback: SendDataCallback) {
+  public send(data: MockBatch, callback: SendDataCallback): void {
+    data
+    callback
   }
 
-  public getUserAgentHeaderValue(name: string, version: string) : string {
+  public getUserAgentHeaderValue(name: string, version: string): string {
     return super.getUserAgentHeaderValue(name, version)
   }
 }
@@ -18,9 +20,9 @@ test('User-Agent setting', (t): void => {
   t.ok(MockClient, 'we have a mock client')
 
   t.test('test user agent without product', (t): void => {
-    const client = new MockClient;
+    const client = new MockClient
     const header = client.getUserAgentHeaderValue(
-      'foo', require('../../package.json').version
+      'foo', BaseClient.getPackageVersion()
     )
 
     const parts         = header.split('/')
@@ -29,10 +31,11 @@ test('User-Agent setting', (t): void => {
 
     t.ok(agentName === 'foo', 'set header name correctly')
     t.ok(3 === versionParts.length, 'version string has three parts')
-    for(const [id, versionPart] of versionParts.entries()) {
+    for (const item of versionParts.entries()) {
+      const versionPart = item.pop().toString()
       // is numeric integer
       t.ok(
-        Number(parseInt(versionPart,10)) == parseInt(versionPart, 10),
+        Number(parseInt(versionPart,10)) === parseInt(versionPart, 10),
         'version part numeric'
       )
     }
@@ -40,10 +43,10 @@ test('User-Agent setting', (t): void => {
   })
 
   t.test('test api that sets additional product', (t): void => {
-    const client = new MockClient;
+    const client = new MockClient
     client.setAdditionalUserAgentInformation('bar', '1.2.3')
     const twoPartHeader = client.getUserAgentHeaderValue(
-      'foo', require('../../package.json').version
+      'foo', BaseClient.getPackageVersion()
     )
 
     const nameParts     = twoPartHeader.split(' ')
@@ -55,10 +58,11 @@ test('User-Agent setting', (t): void => {
 
     t.ok(agentName === 'foo', 'set header name correctly')
     t.ok(3 === versionParts.length, 'version string has three parts')
-    for(const [id, versionPart] of versionParts.entries()) {
+    for (const item of versionParts.entries()) {
+      const versionPart = item.pop().toString()
       // is numeric integer
       t.ok(
-        Number(parseInt(versionPart,10)) == parseInt(versionPart, 10),
+        Number(parseInt(versionPart,10)) === parseInt(versionPart, 10),
         'version part numeric'
       )
     }

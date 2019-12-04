@@ -34,26 +34,32 @@ export class RequestResponseError extends Error {
 }
 
 export abstract class BaseClient<T> {
-  product: string
-  productVersion: string
-  userAgentHeader: string
+  private product: string
+  private productVersion: string
+  private userAgentHeader: string
 
   public abstract send(data: T, callback: SendDataCallback): void
-  public setAdditionalUserAgentInformation(product: string, productVersion: string) {
+  public setAdditionalUserAgentInformation(
+    product: string,
+    productVersion: string): void {
     this.product = product
     this.productVersion = productVersion
   }
 
-  protected getUserAgentHeaderValue(name: string, version: string) : string {
-    if(!this.userAgentHeader) {
+  protected getUserAgentHeaderValue(name: string, version: string): string {
+    if (!this.userAgentHeader) {
       let header = name + '/' + version
-      if(this.product && this.productVersion) {
+      if (this.product && this.productVersion) {
         header += ' ' + this.product + '/' + this.productVersion
       }
       this.userAgentHeader =  header
     }
 
     return this.userAgentHeader
+  }
+
+  public static getPackageVersion = function(): string {
+    return require('../../package.json').version
   }
 
   protected _sendData(
@@ -76,7 +82,7 @@ export abstract class BaseClient<T> {
       headers['Content-Length'] = compressed.length
       headers['User-Agent'] = this.getUserAgentHeaderValue(
         'NewRelic-nodejs-TelemetrySDK',
-        require('../../package.json').version
+        BaseClient.getPackageVersion()
       )
 
       const options: RequestOptions = {
