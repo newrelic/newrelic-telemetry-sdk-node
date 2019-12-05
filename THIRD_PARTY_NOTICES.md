@@ -20,7 +20,7 @@ code, the source code can be found at [https://github.com/newrelic/newrelic-tele
 * [@types/nock](#typesnock)
 * [@types/sinon](#typessinon)
 * [@types/tape](#typestape)
-* [@types/uuid](#typessemver)
+* [@types/semver](#typessemver)
 * [@typescript-eslint/eslint-plugin](#typescript-eslinteslint-plugin)
 * [@typescript-eslint/parser](#typescript-eslintparser)
 * [eslint](#eslint)
