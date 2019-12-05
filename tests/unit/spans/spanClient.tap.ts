@@ -1,8 +1,8 @@
 import test from 'tape'
 import { Span } from '../../../src/client/spans'
 
-test('Span client', (t):void => {
-  t.test('sets properties', () => {
+test('Span client', (t): void => {
+  t.test('sets properties', (t): void => {
     const date = Date.now()
     const span = new Span('SpanId', 'TraceId', date)
 
