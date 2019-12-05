@@ -35,5 +35,8 @@
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/semver": "^6.2.0",
+    "semver": "^6.3.0"
+  }
 }

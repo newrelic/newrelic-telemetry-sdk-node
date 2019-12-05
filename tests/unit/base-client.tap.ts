@@ -1,4 +1,5 @@
 import test from 'tape'
+import semver from 'semver'
 import {BaseClient, SendDataCallback} from '../../src/client/base-client'
 
 class MockBatch {
@@ -26,19 +27,11 @@ test('User-Agent setting', (t): void => {
     )
 
     const parts         = header.split('/')
-    const versionParts  = parts.pop().split('.')
+    const version       = parts.pop()
     const agentName     = parts.join('/')
 
     t.ok(agentName === 'foo', 'set header name correctly')
-    t.ok(3 === versionParts.length, 'version string has three parts')
-    for (const item of versionParts.entries()) {
-      const versionPart = item.pop().toString()
-      // is numeric integer
-      t.ok(
-        Number(parseInt(versionPart,10)) === parseInt(versionPart, 10),
-        'version part numeric'
-      )
-    }
+    t.ok(semver.valid(version),'version is a valid string')
     t.end()
   })
 
