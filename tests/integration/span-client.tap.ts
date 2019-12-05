@@ -16,12 +16,17 @@ const spanConfig: SpanClientOptions = {
 }
 
 test('Span Client Integration Tests', (t): void => {
-  t.ok(spanConfig.apiKey, 'TEST_LICENSE_KEY must be configured for tests')
+  t.ok(spanConfig.apiKey, 'TEST_API_KEY must be configured for tests')
 
   t.test('Should send batch of individually added spans', (t): void => {
     const traceId = Date.now().toString()
 
-    const batch = new SpanBatch()
+    const attributes = {
+      'name': 'commonName',
+      'service.name': 'node-sdk-test-entity'
+    }
+
+    const batch = new SpanBatch(attributes)
 
     const span1: Span = {
       'id': uuidv4(),
@@ -39,10 +44,8 @@ test('Span Client Integration Tests', (t): void => {
       'trace.id': traceId,
       'timestamp': Date.now(),
       'attributes': {
-        'name': 'childTest',
-        'service.name': 'node-sdk-test-entity',
+        'name': 'firstTest',
         'duration.ms': 10,
-        'parent.id': span1.id
       }
     }
 
