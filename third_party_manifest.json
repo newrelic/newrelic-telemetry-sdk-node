@@ -11,9 +11,9 @@
       "range": "^6.2.0",
       "licenses": "MIT",
       "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/v6.2.0",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/7f9ef75bffd7ea782bfaf98ffd16c1bdcf2fcbb0",
       "licenseFile": "node_modules/@types/semver/LICENSE",
-      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/v6.2.0/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/7f9ef75bffd7ea782bfaf98ffd16c1bdcf2fcbb0/LICENSE",
       "licenseTextSource": "file"
     },
     "@types/tape@4.2.33": {
