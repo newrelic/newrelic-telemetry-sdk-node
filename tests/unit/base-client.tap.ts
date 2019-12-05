@@ -44,7 +44,7 @@ test('User-Agent setting', (t): void => {
 
   t.test('test api that sets additional product', (t): void => {
     const client = new MockClient
-    client.setAdditionalUserAgentInformation('bar', '1.2.3')
+    client.addVersionInfo('bar', '1.2.3')
     const twoPartHeader = client.getUserAgentHeaderValue(
       'foo', BaseClient.getPackageVersion()
     )

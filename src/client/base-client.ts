@@ -39,7 +39,7 @@ export abstract class BaseClient<T> {
   private userAgentHeader: string
 
   public abstract send(data: T, callback: SendDataCallback): void
-  public setAdditionalUserAgentInformation(
+  public addVersionInfo(
     product: string,
     productVersion: string): void {
     this.product = product
