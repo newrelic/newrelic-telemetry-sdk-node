@@ -1,10 +1,21 @@
 {
-  "lastUpdated": "Wed Dec 04 2019 14:00:01 GMT-0800 (Pacific Standard Time)",
+  "lastUpdated": "Wed Dec 04 2019 17:02:09 GMT-0800 (Pacific Standard Time)",
   "projectName": "@newrelic/telemetry-sdk",
   "projectUrl": "https://github.com/newrelic/newrelic-telemetry-sdk-node/",
   "includeDev": true,
   "dependencies": {},
   "devDependencies": {
+    "@types/semver@6.2.0": {
+      "name": "@types/semver",
+      "version": "6.2.0",
+      "range": "^6.2.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/7f9ef75bffd7ea782bfaf98ffd16c1bdcf2fcbb0",
+      "licenseFile": "node_modules/@types/semver/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/7f9ef75bffd7ea782bfaf98ffd16c1bdcf2fcbb0/LICENSE",
+      "licenseTextSource": "file"
+    },
     "@types/tape@4.2.33": {
       "name": "@types/tape",
       "version": "4.2.33",
@@ -61,6 +72,17 @@
       "licenseTextSource": "file",
       "publisher": "Nicholas C. Zakas",
       "email": "nicholas+npm@nczconsulting.com"
+    },
+    "semver@6.3.0": {
+      "name": "semver",
+      "version": "6.3.0",
+      "range": "^6.3.0",
+      "licenses": "ISC",
+      "repoUrl": "https://github.com/npm/node-semver",
+      "versionedRepoUrl": "https://github.com/npm/node-semver/tree/v6.3.0",
+      "licenseFile": "node_modules/semver/LICENSE",
+      "licenseUrl": "https://github.com/npm/node-semver/blob/v6.3.0/LICENSE",
+      "licenseTextSource": "file"
     },
     "tape@4.11.0": {
       "name": "tape",
