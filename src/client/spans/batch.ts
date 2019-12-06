@@ -1,8 +1,8 @@
-import { Span, SpanAttributeMap } from './span'
+import { Span, SpanData } from './span'
 import { AttributeMap } from '../attributeMap'
 
 interface CommonSpanData {
-  attributes?: SpanAttributeMap | AttributeMap
+  attributes?: AttributeMap
 }
 
 // TODO: Consider ability to send SpanBatch purely via interface. Would
@@ -10,7 +10,7 @@ interface CommonSpanData {
 // TODO: Rename to avoid 'payload'. Find clear wording between interface
 // and class.
 interface SpanBatchPayload {
-  spans?: Span[]
+  spans?: SpanData[]
   common?: CommonSpanData
 }
 
@@ -19,8 +19,8 @@ export class SpanBatch implements SpanBatchPayload {
   public spans: Span[]
 
   public constructor(
-    attributes?: SpanAttributeMap | AttributeMap,
-    spans?: Span[]
+    attributes?: AttributeMap,
+    spans?: SpanData[]
   ) {
     if (attributes) {
       const common: CommonSpanData = {}

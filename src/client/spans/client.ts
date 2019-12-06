@@ -1,7 +1,7 @@
 import { BaseClient, SendDataOptions, SendDataCallback } from '../base-client'
 import { SpanBatch } from './batch'
 
-const SPAN_HOST = 'trace-api.newrelic.com/trace/v1'
+const SPAN_HOST = 'trace-api.newrelic.com'
 const SPAN_PATH = '/trace/v1'
 const SPAN_DATA_FORMAT = 'newrelic'
 const SPAN_DATA_FORMAT_VERSION = 1

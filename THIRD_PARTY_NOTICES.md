@@ -37,7 +37,7 @@ code, the source code can be found at [https://github.com/newrelic/newrelic-tele
 
 ### @types/tape
 
-This product includes source derived from [@types/tape](https://github.com/DefinitelyTyped/DefinitelyTyped) ([v4.2.33](https://github.com/DefinitelyTyped/DefinitelyTyped/)), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
+This product includes source derived from [@types/tape](https://github.com/DefinitelyTyped/DefinitelyTyped), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
 
 ```
     MIT License
@@ -348,7 +348,6 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 
 END OF TERMS AND CONDITIONS
->>>>>>> Stashed changes
 
 Version 2.0, January 2004
 
@@ -371,8 +370,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 "Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.
 
 "Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).
->>>>>>> Stashed changes
-
 ```
 
 ### uuid
