@@ -1,24 +1,17 @@
 import { AttributeMap } from '../attributeMap'
 
-export interface SpanAttributeMap {
-  'duration.ms'?: number
-  name?: string
-  'parent.id'?: string
-  'service.name'?: string
-}
-
 export interface SpanData {
   id: string
   'trace.id': string
   timestamp: number
-  attributes?: SpanAttributeMap | AttributeMap
+  attributes?: AttributeMap
 }
 
 export class Span implements SpanData {
   public id: string
   public 'trace.id': string
   public timestamp: number
-  public attributes?: SpanAttributeMap | AttributeMap
+  public attributes?: AttributeMap
 
   // eslint-disable-next-line max-params
   public constructor(
@@ -29,7 +22,7 @@ export class Span implements SpanData {
     parentId?: string,
     serviceName?: string,
     duration?: number,
-    attributes?: SpanAttributeMap | AttributeMap
+    attributes?: AttributeMap
   ) {
     this.id = id
     this['trace.id'] = traceId
