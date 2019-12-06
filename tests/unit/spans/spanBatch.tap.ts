@@ -16,14 +16,11 @@ test('Span batch', (t): void => {
       const attributes = {
         'name': 'name',
         'service.name': 'serviceName',
-        'duration.ms': 808,
         'host': 'with the most'
       }
 
       const batch = new SpanBatch(attributes)
 
-      t.equal(batch.common.attributes['duration.ms'], 
-        808, 'sets duration.ms attribute')
       t.equal(batch.common.attributes['service.name'], 
         'serviceName', 'sets service.name attribute')
       t.equal(batch.common.attributes.name, 'name', 'sets name attribute')

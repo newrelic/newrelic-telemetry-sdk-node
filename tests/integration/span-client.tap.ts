@@ -90,4 +90,28 @@ test('Span Client Integration Tests', (t): void => {
       t.end()
     })
   })
+
+  t.test('should send custom attributes', (t): void => {
+    const batch = new SpanBatch()
+    const attributes = {
+      'host': 'twinkies',
+      'service.name': 'node-sdk-test-entity'
+    }
+
+    const span = new Span(uuidv4(), 'tracer100', Date.now(),
+      'name', 'parentId', 'node-sdk-test-entity', 10,
+      attributes)
+
+    batch.addSpan(span)
+
+    const client = new SpanClient(spanConfig)
+    client.send(batch, (err, res, body): void => {
+      t.error(err)
+      t.ok(res)
+      t.ok(body)
+
+      t.equal(res.statusCode, 202)
+      t.end()
+    })
+  })
 })
