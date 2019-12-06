@@ -23,7 +23,7 @@ export class SummaryMetric extends MetricBase<SummaryValue> {
     super(name, MetricType.Summary, value, attributes, timestamp, intervalMs)
   }
 
-  public record(value: number): MetricBase<SummaryValue> {
+  public record(value: number): this {
     ++this.value.count
     this.value.sum += value
     this.value.min = Math.min(this.value.min, value)
