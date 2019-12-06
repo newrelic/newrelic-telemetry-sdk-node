@@ -71,7 +71,7 @@ jobs:
             npm install
             npm run integration
 
-  integration-tests:
+  unit-tests:
     parameters:
       version:
         type: integer
