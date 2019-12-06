@@ -21,14 +21,14 @@ export class Span implements SpanData {
     name?: string,
     parentId?: string,
     serviceName?: string,
-    duration?: number,
+    durationMs?: number,
     attributes?: AttributeMap
   ) {
     this.id = id
     this['trace.id'] = traceId
     this.timestamp = timestamp
 
-    if (name || parentId || serviceName || duration != null || attributes) {
+    if (name || parentId || serviceName || durationMs != null || attributes) {
       this.attributes = attributes || {}
       
       if (name) {
@@ -43,8 +43,8 @@ export class Span implements SpanData {
         this.attributes['service.name'] = serviceName
       }
 
-      if (duration != null) {
-        this.attributes['duration.ms'] = duration
+      if (durationMs != null) {
+        this.attributes['duration.ms'] = durationMs
       }
     }
   }
