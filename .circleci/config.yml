@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Integration Tests (Node << parameters.version >>)"
+          name: "Unit Tests (Node << parameters.version >>)"
           command: |
             npm install
             npm run unit
