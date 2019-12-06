@@ -50,5 +50,5 @@ implements Metric {
     this['interval.ms'] = intervalMs
   }
 
-  abstract record(value: number): MetricBase<ValueT>
+  abstract record(value: number): this
 }

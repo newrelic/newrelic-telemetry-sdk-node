@@ -12,7 +12,7 @@ export class CountMetric extends MetricBase<number> {
     super(name, MetricType.Count, value, attributes, timestamp, intervalMs)
   }
 
-  public record(value: number = 1): MetricBase<number> {
+  public record(value: number = 1): this {
     this.value += value
 
     return this

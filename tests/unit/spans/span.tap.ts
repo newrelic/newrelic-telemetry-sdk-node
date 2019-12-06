@@ -80,8 +80,8 @@ test('Span', (t): void => {
 
   t.test('should set custom attributes', (t): void => {
     const attributes = {
-      'host': 'twinkies',
-      'donuts': 12
+      host: 'twinkies',
+      donuts: 12
     }
     const span = new Span('id', 'trace', 3, 
       undefined, undefined, undefined, undefined,

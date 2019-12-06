@@ -6,13 +6,12 @@ export class GaugeMetric extends MetricBase<number> {
     name: string,
     value: number,
     attributes?: AttributeMap,
-    timestamp?: number,
-    intervalMs?: number
+    timestamp?: number
   ) {
-    super(name, MetricType.Gauge, value, attributes, timestamp, intervalMs)
+    super(name, MetricType.Gauge, value, attributes, timestamp)
   }
 
-  public record(value: number): MetricBase<number> {
+  public record(value: number): this {
     this.value = value
 
     return this
