@@ -19,7 +19,7 @@ export class SpanBatch implements SpanBatchPayload {
     // too big, keep the first `this.LIMIT` items and
     // then use addSpan to add the rest (making the later
     // items subject to the adaptive sampling)
-    if(this.spans.length > this.LIMIT) {
+    if (this.spans.length > this.LIMIT) {
       const remnant = this.spans.splice(this.LIMIT)
       this.addSpan(...remnant)
     }
@@ -29,16 +29,18 @@ export class SpanBatch implements SpanBatchPayload {
     this.spans.push(...spans)
 
     // keep spans array at its limited value
-    while(this.LIMIT < this.spans.length) {
-      this.spans.splice(this.getRandomInt(0, this.LIMIT-1), 1)
+    while (this.LIMIT < this.spans.length) {
+      this.spans.splice(this.getRandomInt(0, this.LIMIT - 1), 1)
     }
     return this
   }
 
   // get a random number between min and max, inclusive
-  protected getRandomInt(min:number, max:number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * ((max + 1) - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  protected getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(
+      Math.random() * ((max + 1) - min)
+    ) + min
   }
 }
