@@ -48,10 +48,6 @@ export class MetricBatch implements MetricBatchPayload {
 
     this.metrics = metrics || []
 
-    // if the client programmer passed us an array that's
-    // too big, keep the first `this.LIMIT` items and
-    // then use addMetric to add the rest (making the later
-    // items subject to the adaptive sampling)
     if (this.metrics.length > this.LIMIT) {
       const remnant = this.metrics.splice(this.LIMIT)
       for (const idAndRemnant of remnant.entries()) {
