@@ -27,6 +27,17 @@
       "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
       "licenseTextSource": "file"
     },
+    "@types/uuid@3.4.6": {
+      "name": "@types/uuid",
+      "version": "3.4.6",
+      "range": "^3.4.6",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "versionedRepoUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/",
+      "licenseFile": "node_modules/@types/uuid/LICENSE",
+      "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE",
+      "licenseTextSource": "file"
+    },
     "@typescript-eslint/eslint-plugin@1.13.0": {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "1.13.0",
@@ -112,6 +123,17 @@
       "licenseUrl": "https://github.com/Microsoft/TypeScript/blob/v3.7.2/LICENSE.txt",
       "licenseTextSource": "file",
       "publisher": "Microsoft Corp."
+    },
+    "uuid@3.3.3": {
+      "name": "uuid",
+      "version": "3.3.3",
+      "range": "^3.3.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/kelektiv/node-uuid",
+      "versionedRepoUrl": "https://github.com/kelektiv/node-uuid/tree/v3.3.3",
+      "licenseFile": "node_modules/uuid/LICENSE.md",
+      "licenseUrl": "https://github.com/kelektiv/node-uuid/blob/v3.3.3/LICENSE.md",
+      "licenseTextSource": "file"
     }
   }
 }

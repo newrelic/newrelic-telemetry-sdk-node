@@ -1,10 +1,11 @@
-import { MetricBase, MetricAttributeMap, MetricType } from './metric'
+import { MetricBase, MetricType } from './metric'
+import { AttributeMap } from '../attributeMap'
 
 export class CountMetric extends MetricBase<number> {
   public constructor(
     name: string,
     value: number = 0,
-    attributes?: MetricAttributeMap,
+    attributes?: AttributeMap,
     timestamp?: number,
     intervalMs?: number
   ) {
