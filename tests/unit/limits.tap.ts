@@ -1,4 +1,6 @@
 import test from 'tape'
+import uuidv4 from 'uuid/v4'
+
 import {
   SummaryMetric,
   MetricBatch,
@@ -68,12 +70,14 @@ test('test limits on batches', (t): void => {
     let hugeSpans: Span[] = []
     while (hugeSpans.length < batch.mockGetLimit() + 10) {
       hugeSpans.push({
-        guid: Date.now().toString(), // TODO: Generate real GUID
-        name: 'limitTest',
-        entityName: 'test-entity',
-        traceId: 'abc123',
-        timestamp: Date.now(),
-        durationMs: 10,
+        'id': uuidv4(),
+        'trace.id': 'abc123',
+        'timestamp': Date.now(),
+        'attributes': {
+          'name': 'firstTest',
+          'service.name': 'node-sdk-test-entity',
+          'duration.ms': 10,
+        }
       })
     }
 
@@ -88,7 +92,7 @@ test('test limits on batches', (t): void => {
     )
 
     // try creating a new batch with too many metrics
-    const batch2 = new MockSpanBatch(hugeSpans)
+    const batch2 = new MockSpanBatch({}, hugeSpans)
     t.ok(
       batch2.mockGetLimit() === batch2.mockGetSpans().length,
       'batch did not keep too large span array'
