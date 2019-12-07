@@ -1,7 +1,8 @@
-import { MetricAttributeMap, Metric } from './metric'
+import { Metric } from './metric'
+import { AttributeMap } from '../attributeMap'
 
 interface CommonMetricData {
-  attributes?: MetricAttributeMap
+  attributes?: AttributeMap
   timestamp?: number
   'interval.ms'?: number
 }
@@ -22,7 +23,7 @@ export class MetricBatch implements MetricBatchPayload {
   public metrics: Metric[]
 
   public constructor(
-    attributes?: MetricAttributeMap,
+    attributes?: AttributeMap,
     timestamp?: number,
     interval?: number,
     metrics?: Metric[]

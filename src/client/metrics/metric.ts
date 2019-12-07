@@ -1,4 +1,5 @@
 import { SummaryValue } from './summary'
+import { AttributeMap } from '../attributeMap'
 
 export enum MetricType {
   Summary = 'summary',
@@ -8,15 +9,11 @@ export enum MetricType {
 
 export type MetricValue = number | SummaryValue
 
-export interface MetricAttributeMap {
-  [attribute: string]: string | number | boolean
-}
-
 export interface Metric {
   name: string
   value: MetricValue
   type?: MetricType
-  attributes?: MetricAttributeMap
+  attributes?: AttributeMap
   timestamp?: number
   'interval.ms'?: number
 }
@@ -27,7 +24,7 @@ implements Metric {
   public value: ValueT
 
   public type: MetricType
-  public attributes?: MetricAttributeMap
+  public attributes?: AttributeMap
 
   public timestamp?: number
   public 'interval.ms'?: number
@@ -37,7 +34,7 @@ implements Metric {
     name: string,
     type: MetricType = MetricType.Gauge,
     value: ValueT,
-    attributes?: MetricAttributeMap,
+    attributes?: AttributeMap,
     timestamp?: number,
     intervalMs?: number
   ) {
@@ -53,5 +50,5 @@ implements Metric {
     this['interval.ms'] = intervalMs
   }
 
-  abstract record(value: number): MetricBase<ValueT>
+  abstract record(value: number): this
 }

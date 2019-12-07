@@ -1,4 +1,5 @@
-import { MetricBase, MetricAttributeMap, MetricType } from './metric'
+import { MetricBase, MetricType } from './metric'
+import { AttributeMap } from '../attributeMap'
 
 export interface SummaryValue {
   count: number
@@ -16,14 +17,14 @@ export class SummaryMetric extends MetricBase<SummaryValue> {
       min: Infinity,
       max: -Infinity
     },
-    attributes?: MetricAttributeMap,
+    attributes?: AttributeMap,
     timestamp?: number,
     intervalMs?: number
   ) {
     super(name, MetricType.Summary, value, attributes, timestamp, intervalMs)
   }
 
-  public record(value: number): MetricBase<SummaryValue> {
+  public record(value: number): this {
     ++this.value.count
     this.value.sum += value
     this.value.min = Math.min(this.value.min, value)
