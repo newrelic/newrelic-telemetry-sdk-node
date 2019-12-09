@@ -70,9 +70,9 @@ export class MetricBatch implements MetricBatchPayload {
     const len = this.metrics.length
     if (len > this.LIMIT) {
       const indexToDrop = this.getRandomInt(0, len - 1)
-      const droppedSpan = this.metrics[indexToDrop]
+      const droppedMetric = this.metrics[indexToDrop]
       this.metrics[indexToDrop] = this.metrics[len - 1]
-      this.metrics[len - 1] = droppedSpan
+      this.metrics[len - 1] = droppedMetric
       this.metrics.pop()
     }
     return this
