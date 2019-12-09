@@ -6,14 +6,14 @@ export class GaugeMetric extends MetricBase<number> {
     name: string,
     value: number,
     attributes?: AttributeMap,
-    timestamp?: number
+    timestamp: number = Date.now()
   ) {
     super(name, MetricType.Gauge, value, attributes, timestamp)
   }
 
   public record(value: number): this {
     this.value = value
-
+    this.timestamp = Date.now()
     return this
   }
 }
