@@ -67,10 +67,13 @@ export class MetricBatch implements MetricBatchPayload {
 
   public addMetric(metric: Metric): MetricBatch {
     this.metrics.push(metric)
-
-    // keep metrics array at its limited value
-    while (this.LIMIT < this.metrics.length) {
-      this.metrics.splice(this.getRandomInt(0, this.LIMIT - 1), 1)
+    const len = this.metrics.length
+    if (len > this.LIMIT) {
+      const indexToDrop = this.getRandomInt(0, len - 1)
+      const droppedSpan = this.metrics[indexToDrop]
+      this.metrics[indexToDrop] = this.metrics[len - 1]
+      this.metrics[len - 1] = droppedSpan
+      this.metrics.pop()
     }
     return this
   }

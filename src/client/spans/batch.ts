@@ -42,12 +42,19 @@ export class SpanBatch implements SpanBatchPayload {
   }
 
   public addSpan(...spans: Span[]): SpanBatch {
-    this.spans.push(...spans)
-
-    // keep spans array at its limited value
-    while (this.LIMIT < this.spans.length) {
-      this.spans.splice(this.getRandomInt(0, this.LIMIT - 1), 1)
+    for (let span of spans) {
+      this.spans.push(span)
+      const len = this.spans.length
+      // keep spans array at its limited value
+      if (len > this.LIMIT) {
+        const indexToDrop = this.getRandomInt(0, len - 1)
+        const droppedSpan = this.spans[indexToDrop]
+        this.spans[indexToDrop] = this.spans[len - 1]
+        this.spans[len - 1] = droppedSpan
+        this.spans.pop()
+      }
     }
+
     return this
   }
 
