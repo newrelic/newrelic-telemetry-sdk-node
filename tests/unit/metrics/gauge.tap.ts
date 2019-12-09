@@ -25,7 +25,7 @@ test('Gauge metrics', (t): void => {
     t.equal(g.name, 'test gauge', 'should have proper name')
     t.ok(g.attributes, 'should have no attributes')
     t.equal(g.attributes.testAttribute, 'asdf', 'should have proper attributes')
-    t.equal(g.timestamp, 4321, 'should have no timestamp')
+    t.equal(g.timestamp, 4321, 'should have timestamp')
     t.equal(g['interval.ms'], undefined, 'should have no interval')
     t.end()
   })
