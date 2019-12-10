@@ -18,6 +18,8 @@ interface MetricBatchPayload {
 
 export class MetricBatch implements MetricBatchPayload {
   public common?: CommonMetricData
+
+  protected readonly LIMIT = 2000
   public metrics: Metric[]
 
   public constructor(
@@ -45,6 +47,13 @@ export class MetricBatch implements MetricBatchPayload {
     }
 
     this.metrics = metrics || []
+
+    if (this.metrics.length > this.LIMIT) {
+      const remnant = this.metrics.splice(this.LIMIT)
+      for (const idAndRemnant of remnant.entries()) {
+        this.addMetric(idAndRemnant[1])
+      }
+    }
   }
 
   public getBatchSize(): number {
@@ -58,7 +67,24 @@ export class MetricBatch implements MetricBatchPayload {
 
   public addMetric(metric: Metric): MetricBatch {
     this.metrics.push(metric)
-
+    const len = this.metrics.length
+    if (len > this.LIMIT) {
+      const indexToDrop = this.getRandomInt(0, len - 1)
+      const droppedMetric = this.metrics[indexToDrop]
+      this.metrics[indexToDrop] = this.metrics[len - 1]
+      this.metrics[len - 1] = droppedMetric
+      this.metrics.pop()
+    }
     return this
   }
+
+  // get a random number between min and max, inclusive
+  protected getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(
+      Math.random() * ((max + 1) - min)
+    ) + min
+  }
 }
+
