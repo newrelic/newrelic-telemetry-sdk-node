@@ -85,7 +85,11 @@ export abstract class BaseClient<T> {
         BaseClient.getPackageVersion()
       )
 
+
+      const agentKeepAlive = new https.Agent({keepAlive:true})
+
       const options: RequestOptions = {
+        agent: agentKeepAlive,
         method: HTTP_METHOD,
         setHost: false, // Valid Node 9+, defaults true. Manually set header for Node 8+.
         host: sendOptions.host,
