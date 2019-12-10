@@ -11,7 +11,7 @@
     "build": "tsc",
     "lint": "eslint 'index.ts' 'src/**' 'tests/**'",
     "prepare": "npm run build",
-    "unit": "ts-node ./node_modules/.bin/tape tests/unit/**/*.tap.ts",
+    "unit": "ts-node ./node_modules/.bin/tape tests/unit/*.tap.ts tests/unit/**/*.tap.ts",
     "integration": "ts-node ./node_modules/.bin/tape tests/integration/**/*.tap.ts",
     "test": "npm run build && npm run unit && npm run integration"
   },
@@ -29,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "eslint": "^5.14.1",
+    "nock": "^11.7.0",
     "semver": "^6.3.0",
     "tape": "^4.10.1",
     "ts-node": "^8.0.2",

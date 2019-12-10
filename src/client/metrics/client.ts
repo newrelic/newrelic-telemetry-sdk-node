@@ -1,5 +1,6 @@
-import { BaseClient, SendDataOptions, SendDataCallback } from '../base-client'
+import { BaseClient, SendDataOptions, SendCallback, RequestData } from '../base-client'
 import { MetricBatch } from './batch'
+import { Logger} from '../../common'
 
 const METRIC_HOST = 'metric-api.newrelic.com'
 const METRIC_PATH = '/metric/v1'
@@ -14,8 +15,8 @@ export class MetricClient extends BaseClient<MetricBatch>  {
   private readonly _hasValidKey: boolean
   private readonly _sendDataOptions: SendDataOptions
 
-  public constructor(options: MetricClientOptions) {
-    super()
+  public constructor(options: MetricClientOptions, logger?: Logger) {
+    super(logger)
 
     this._hasValidKey = this._isValidKey(options && options.apiKey)
 
@@ -35,27 +36,21 @@ export class MetricClient extends BaseClient<MetricBatch>  {
     return !!insertKey
   }
 
-  public send(data: MetricBatch, callback: SendDataCallback): void {
+  public send(data: MetricBatch, callback: SendCallback<MetricBatch>): void {
     if (!this._hasValidKey) {
       const keyError = new Error(INVALID_KEY_MESSAGE)
       callback(keyError, null, null)
     }
 
-    // We could create an array and call sendMany but this avoids the
-    // array allocation.
+    const retryData: RequestData<MetricBatch> = {
+      client: this,
+      originalData: data
+    }
+
     const payload = `[${JSON.stringify(data)}]`
 
-    this._sendData(this._sendDataOptions, payload, callback)
-  }
-
-  public sendMany(data: MetricBatch[], callback: SendDataCallback): void {
-    if (!this._hasValidKey) {
-      const keyError = new Error(INVALID_KEY_MESSAGE)
-      callback(keyError, null, null)
-    }
-
-    const payload = JSON.stringify(data)
-
-    this._sendData(this._sendDataOptions, payload, callback)
+    this._sendData(this._sendDataOptions, payload, (err, res, body): void => {
+      callback(err, res, body, retryData)
+    })
   }
 }
