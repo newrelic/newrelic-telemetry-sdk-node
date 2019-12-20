@@ -11,7 +11,7 @@
     "build": "tsc",
     "lint": "eslint 'index.ts' 'src/**' 'tests/**'",
     "prepare": "npm run build",
-    "unit": "ts-node ./node_modules/.bin/tape tests/unit/**/*.tap.ts",
+    "unit": "ts-node ./node_modules/.bin/tape tests/unit/*.tap.ts tests/unit/**/*.tap.ts",
     "integration": "ts-node ./node_modules/.bin/tape tests/integration/**/*.tap.ts",
     "test": "npm run build && npm run unit && npm run integration"
   },

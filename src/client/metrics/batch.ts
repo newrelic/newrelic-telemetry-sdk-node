@@ -16,10 +16,11 @@ interface MetricBatchPayload {
   metrics: Metric[]
 }
 
+export const LIMIT = 2000
+
 export class MetricBatch implements MetricBatchPayload {
   public common?: CommonMetricData
 
-  protected readonly LIMIT = 2000
   public metrics: Metric[]
 
   public constructor(
@@ -48,8 +49,8 @@ export class MetricBatch implements MetricBatchPayload {
 
     this.metrics = metrics || []
 
-    if (this.metrics.length > this.LIMIT) {
-      const remnant = this.metrics.splice(this.LIMIT)
+    if (this.metrics.length > LIMIT) {
+      const remnant = this.metrics.splice(LIMIT)
       for (const idAndRemnant of remnant.entries()) {
         this.addMetric(idAndRemnant[1])
       }
@@ -68,7 +69,7 @@ export class MetricBatch implements MetricBatchPayload {
   public addMetric(metric: Metric): MetricBatch {
     this.metrics.push(metric)
     const len = this.metrics.length
-    if (len > this.LIMIT) {
+    if (len > LIMIT) {
       const indexToDrop = this.getRandomInt(0, len - 1)
       const droppedMetric = this.metrics[indexToDrop]
       this.metrics[indexToDrop] = this.metrics[len - 1]
