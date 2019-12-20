@@ -1,5 +1,5 @@
 import test from 'tape'
-import { CountMetric } from '../../../src/client/metrics/count'
+import { CountMetric } from '../../../src/telemetry/metrics/count'
 
 test('Count metrics', (t): void => {
   t.test('should accept optional non-name parameters', (t): void => {

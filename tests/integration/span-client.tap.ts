@@ -8,7 +8,7 @@ import {
   SpanClientOptions,
   SpanBatch,
   Span
-} from '../../src/client/spans'
+} from '../../src/telemetry/spans'
 
 const spanConfig: SpanClientOptions = {
   apiKey: process.env.TEST_API_KEY,
