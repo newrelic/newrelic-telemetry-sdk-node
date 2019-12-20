@@ -1,5 +1,7 @@
 import test from 'tape'
 
+import { verifyNrIntegrationErrors, NewRelicFeature } from './insights-results'
+
 import {
   MetricClient,
   MetricBatch,
@@ -36,9 +38,10 @@ test('Metric Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.Metrics, body, t.end)
     })
   })
+
 
   t.test('Should send batch from summary metric array', (t): void => {
     const summary1 = new SummaryMetric('my-summary-1')
@@ -59,7 +62,7 @@ test('Metric Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.Metrics, body, t.end)
     })
   })
 
@@ -82,7 +85,7 @@ test('Metric Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.Metrics, body, t.end)
     })
   })
 
@@ -105,7 +108,7 @@ test('Metric Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.Metrics, body, t.end)
     })
   })
 
@@ -137,7 +140,7 @@ test('Metric Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.Metrics, body, t.end)
     })
   })
 })
