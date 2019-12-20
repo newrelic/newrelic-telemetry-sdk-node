@@ -67,4 +67,35 @@ export class SpanBatch implements SpanBatchPayload {
       Math.random() * ((max + 1) - min)
     ) + min
   }
+
+  public getBatchSize(): number {
+    return this.spans.length
+  }
+
+  public split(): SpanBatch[] {
+    if (this.spans.length === 0) {
+      return []
+    }
+
+    if (this.spans.length === 1) {
+      const spans = [this.spans[0]]
+      const batch = SpanBatch.createNew(this.common, spans)
+
+      return [batch]
+    }
+
+    const midpoint = Math.floor(this.spans.length / 2)
+    const leftSpans = this.spans.slice(0, midpoint)
+    const rightSpans = this.spans.slice(midpoint)
+
+    const leftBatch = SpanBatch.createNew(this.common, leftSpans)
+    const rightBatch = SpanBatch.createNew(this.common, rightSpans)
+
+    return [leftBatch, rightBatch]
+  }
+
+  private static createNew(common: CommonSpanData, spans: SpanData[]): SpanBatch {
+    const batch = new SpanBatch(common && common.attributes, spans)
+    return batch
+  }
 }

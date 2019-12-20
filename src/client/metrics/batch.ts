@@ -61,6 +61,39 @@ export class MetricBatch implements MetricBatchPayload {
     return this.metrics.length
   }
 
+  public split(): MetricBatch[] {
+    if (this.metrics.length === 0) {
+      return []
+    }
+
+    if (this.metrics.length === 1) {
+      const metrics = [this.metrics[0]]
+      const batch = MetricBatch.createNew(this.common, metrics)
+
+      return [batch]
+    }
+
+    const midpoint = Math.floor(this.metrics.length / 2)
+    const leftMetrics = this.metrics.slice(0, midpoint)
+    const rightMetrics = this.metrics.slice(midpoint)
+
+    const leftBatch = MetricBatch.createNew(this.common, leftMetrics)
+    const rightBatch = MetricBatch.createNew(this.common, rightMetrics)
+
+    return [leftBatch, rightBatch]
+  }
+
+  private static createNew(common: CommonMetricData, metrics: Metric[]): MetricBatch {
+    const batch = new MetricBatch(
+      common && common.attributes,
+      common && common.timestamp,
+      common &&  common['interval.ms'],
+      metrics
+    )
+
+    return batch
+  }
+
   public computeInterval(endTime: number): this {
     this.common['interval.ms'] = endTime - this.common.timestamp
     return this

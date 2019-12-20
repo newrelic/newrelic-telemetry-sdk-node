@@ -1,5 +1,6 @@
-import { BaseClient, SendDataOptions, SendDataCallback } from '../base-client'
+import { BaseClient, SendDataOptions, SendCallback, RequestData } from '../base-client'
 import { SpanBatch } from './batch'
+import { Logger} from '../../common'
 
 const SPAN_HOST = 'trace-api.newrelic.com'
 const SPAN_PATH = '/trace/v1'
@@ -16,8 +17,8 @@ export class SpanClient extends BaseClient<SpanBatch> {
   private readonly _hasValidKey: boolean
   private readonly _sendDataOptions: SendDataOptions
 
-  public constructor(options: SpanClientOptions) {
-    super()
+  public constructor(options: SpanClientOptions, logger?: Logger) {
+    super(logger)
 
     this._hasValidKey = this._isValidKey(options && options.apiKey)
 
@@ -39,14 +40,21 @@ export class SpanClient extends BaseClient<SpanBatch> {
     return !!insertKey
   }
 
-  public send(data: SpanBatch, callback: SendDataCallback): void {
+  public send(data: SpanBatch, callback: SendCallback<SpanBatch>): void {
     if (!this._hasValidKey) {
       const keyError = new Error(INVALID_KEY_MESSAGE)
       callback(keyError, null, null)
     }
 
+    const retryData: RequestData<SpanBatch> = {
+      client: this,
+      originalData: data
+    }
+
     const payload = `[${JSON.stringify(data)}]`
 
-    this._sendData(this._sendDataOptions, payload, callback)
+    this._sendData(this._sendDataOptions, payload, (err, res, body): void => {
+      callback(err, res, body, retryData)
+    })
   }
 }
