@@ -1,12 +1,12 @@
 import test from 'tape'
 import semver from 'semver'
-import {BaseClient, SendDataCallback} from '../../src/client/base-client'
+import {BaseClient, SendCallback} from '../../src/client/base-client'
 
 class MockBatch {
 }
 
 class MockClient extends BaseClient<MockBatch> {
-  public send(data: MockBatch, callback: SendDataCallback): void {
+  public send(data: MockBatch, callback: SendCallback<MockBatch>): void {
     data
     callback
   }

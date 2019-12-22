@@ -1,25 +1,28 @@
 import { IncomingMessage, IncomingHttpHeaders } from 'http'
 import { RequestResponseError } from './base-client'
 
-export enum Reaction {
+export enum RecommendedAction {
   Success,
   Discard,
+  Retry,
   SplitRetry,
   RetryAfter,
-  Backoff,
-  Error
+  Backoff
 }
 
 const discardCodes = new Set([
   400,
+  401,
   403,
   404,
   405,
+  409,
+  410,
   411
 ])
 
 interface ParsedResponse {
-  suggestedReaction: Reaction
+  recommendedAction: RecommendedAction
   retryAfterMs?: number
   error?: Error
 }
@@ -34,17 +37,19 @@ export function parseResponse(err: Error, res: IncomingMessage): ParsedResponse 
 
 function parseStatus(status: number, headers: IncomingHttpHeaders): ParsedResponse {
   const parsedResponse: ParsedResponse = {
-    suggestedReaction: Reaction.Backoff
+    recommendedAction: RecommendedAction.Backoff
   }
 
-  if (status < 400) {
-    parsedResponse.suggestedReaction = Reaction.Success
+  if (status < 300) {
+    parsedResponse.recommendedAction = RecommendedAction.Success
   } else if (discardCodes.has(status)) {
-    parsedResponse.suggestedReaction = Reaction.Discard
+    parsedResponse.recommendedAction = RecommendedAction.Discard
+  } else if (status === 408) {
+    parsedResponse.recommendedAction = RecommendedAction.Retry
   } else if (status === 413) {
-    parsedResponse.suggestedReaction = Reaction.SplitRetry
+    parsedResponse.recommendedAction = RecommendedAction.SplitRetry
   } else if (status === 429) {
-    parsedResponse.suggestedReaction = Reaction.RetryAfter
+    parsedResponse.recommendedAction = RecommendedAction.RetryAfter
     const retryTimeInMs = parseInt(headers['retry-after'].toString(), 10) * 1000
     parsedResponse.retryAfterMs = retryTimeInMs
   }
@@ -54,12 +59,13 @@ function parseStatus(status: number, headers: IncomingHttpHeaders): ParsedRespon
 
 function parseError(error: Error): ParsedResponse {
   const parsedResponse: ParsedResponse = {
-    suggestedReaction: Reaction.Error,
+    recommendedAction: RecommendedAction.Discard,
     error: error
   }
 
   if (error instanceof RequestResponseError) {
-    parsedResponse.suggestedReaction = Reaction.Backoff
+    parsedResponse.recommendedAction = RecommendedAction.Backoff
+    parsedResponse.error = error.innerError
   }
 
   return parsedResponse

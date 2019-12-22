@@ -1,5 +1,6 @@
 import https, { RequestOptions } from 'https'
 import { OutgoingHttpHeaders, IncomingMessage } from 'http'
+import { Logger, NoOpLogger } from '../common/'
 
 import zlib from 'zlib'
 import url from 'url'
@@ -18,8 +19,33 @@ export interface SendDataOptions {
   query?: string | null | { [key: string]: string | number }
 }
 
-export interface SendDataCallback {
-  (error: Error, response: IncomingMessage, body: string): void
+/**
+ * Client and data used to send data to SDK endpoints.
+ * Aids in handling of send responses, primarily for retries and data splitting.
+ * Allows the addition of any arbitrary metadata to help with further processing
+ */
+export interface RequestData<T> {
+  /**
+   * Client used to make the request.
+   */
+  client: BaseClient<T>
+  /**
+   * Original data (not serialized) sent in the request.
+   */
+  originalData: T
+  /**
+   * Allows any additional metadata to be added to aid in request processing.
+   */
+  [key: string]: any // eslint-disable-line @typescript-eslint/no-explicit-any
+}
+
+export interface SendCallback<T> {
+  (
+    error: Error,
+    response: IncomingMessage,
+    body: string,
+    requestData?: RequestData<T>
+  ): void
 }
 
 export class RequestResponseError extends Error {
@@ -38,7 +64,13 @@ export abstract class BaseClient<T> {
   private productVersion: string
   private userAgentHeader: string
 
-  public abstract send(data: T, callback: SendDataCallback): void
+  public logger: Logger
+
+  public constructor(logger: Logger = new NoOpLogger()) {
+    this.logger = logger
+  }
+
+  public abstract send(data: T, callback: SendCallback<T>): void
   public addVersionInfo(
     product: string,
     productVersion: string): void {
@@ -65,7 +97,7 @@ export abstract class BaseClient<T> {
   protected _sendData(
     sendOptions: SendDataOptions,
     payload: string,
-    callback: SendDataCallback
+    callback: (error: Error, response: IncomingMessage, body: string) => void
   ): void {
     // TODO: avoid compression for smaller amounts of data?
     zlib.gzip(payload, (err, compressed): void => {
@@ -86,7 +118,7 @@ export abstract class BaseClient<T> {
       )
 
 
-      const agentKeepAlive = new https.Agent({keepAlive:true})
+      const agentKeepAlive = new https.Agent({keepAlive: true})
 
       const options: RequestOptions = {
         agent: agentKeepAlive,

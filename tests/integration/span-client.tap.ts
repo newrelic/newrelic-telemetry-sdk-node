@@ -1,7 +1,7 @@
-// TODO: placeholder until we focus on full implementation
-
 import test from 'tape'
 import uuidv4 from 'uuid/v4'
+
+import { verifyNrIntegrationErrors, NewRelicFeature } from './insights-results'
 
 import {
   SpanClient,
@@ -60,7 +60,7 @@ test('Span Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.DistributedTracing, body, t.end)
     })
   })
 
@@ -87,7 +87,7 @@ test('Span Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.DistributedTracing, body, t.end)
     })
   })
 
@@ -111,7 +111,7 @@ test('Span Client Integration Tests', (t): void => {
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      t.end()
+      verifyNrIntegrationErrors(t, NewRelicFeature.DistributedTracing, body, t.end)
     })
   })
 })
