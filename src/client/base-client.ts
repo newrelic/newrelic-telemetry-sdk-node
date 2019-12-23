@@ -63,7 +63,7 @@ export abstract class BaseClient<T> {
   private product: string
   private productVersion: string
   private userAgentHeader: string
-
+  private packageVersion: string
   public logger: Logger
 
   public constructor(logger: Logger = new NoOpLogger()) {
@@ -91,13 +91,14 @@ export abstract class BaseClient<T> {
   }
 
   public static getPackageVersion = function(): string {
-    let version
-    try {
-      version = require('../../../package.json').version
-    } catch (e) {
-      version = require('../../package.json').version
+    if (!this.packageVersion) {
+      try {
+        this.packageVersion = require('../../../package.json').version
+      } catch (e) {
+        this.packageVersion = require('../../package.json').version
+      }
     }
-    return version
+    return this.packageVersion
   }
 
   protected _sendData(
