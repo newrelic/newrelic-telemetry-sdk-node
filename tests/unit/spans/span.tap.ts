@@ -1,5 +1,5 @@
 import test from 'tape'
-import { Span } from '../../../src/client/spans/span'
+import { Span } from '../../../src/telemetry/spans/span'
 
 test('Span', (t): void => {
   t.test('sets required properties', (t): void => {
@@ -43,10 +43,10 @@ test('Span', (t): void => {
       'service.name': 'service',
       'duration.ms': 20
     }
-    const span = new Span('id', 'trace', 3, 
+    const span = new Span('id', 'trace', 3,
       undefined, undefined, undefined, undefined,
       attributes)
-  
+
     t.ok(span.attributes['parent.id'])
     t.equal(span.attributes['parent.id'], 'parentid')
     t.ok(span.attributes.name)
@@ -66,7 +66,7 @@ test('Span', (t): void => {
       'service.name': 'service',
       'duration.ms': 20
     }
-    const span = new Span('id', 'trace', 3, 
+    const span = new Span('id', 'trace', 3,
       'overrideName', 'overrideParent', 'overrideService', 0,
       attributes)
 
@@ -83,7 +83,7 @@ test('Span', (t): void => {
       host: 'twinkies',
       donuts: 12
     }
-    const span = new Span('id', 'trace', 3, 
+    const span = new Span('id', 'trace', 3,
       undefined, undefined, undefined, undefined,
       attributes)
 

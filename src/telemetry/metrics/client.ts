@@ -44,6 +44,11 @@ export class MetricClient extends BaseClient<MetricBatch>  {
     return !!insertKey
   }
 
+  /**
+   * Sends a MetricBatch to the New Relic Metrics endpoint.
+   * @param data
+   * @param  callback
+   */
   public send(data: MetricBatch, callback: SendCallback<MetricBatch>): void {
     if (!this._hasValidKey) {
       const keyError = new Error(INVALID_KEY_MESSAGE)

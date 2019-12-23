@@ -48,6 +48,11 @@ export class SpanClient extends BaseClient<SpanBatch> {
     return !!insertKey
   }
 
+  /**
+   * Sends a SpanBatch to the New Relic Trace endpoint.
+   * @param data
+   * @param callback
+   */
   public send(data: SpanBatch, callback: SendCallback<SpanBatch>): void {
     if (!this._hasValidKey) {
       const keyError = new Error(INVALID_KEY_MESSAGE)
