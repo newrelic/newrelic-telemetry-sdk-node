@@ -24,8 +24,6 @@ Once installed, you can get started with a simple program that will create a met
 
     // create our client using the metrics API key
     const client = new MetricClient({
-      apiKey: 'GU91iNDrgeSDBc8_-A_a1FaEOklqGGhB',
-      host: 'staging-metric-api.newrelic.com'
       // apiKey: 'abc...123'       // your metrics API key
       //                           // https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/introduction-metric-api#access-requirements
     })
