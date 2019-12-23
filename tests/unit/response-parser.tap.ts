@@ -2,7 +2,11 @@ import test from 'tape'
 import { IncomingMessage } from 'http'
 import { Socket } from 'net'
 
-import { parseResponse, RecommendedAction, RequestResponseError } from '../../src/telemetry'
+import {
+  parseResponse,
+  RecommendedAction,
+  RequestResponseError
+} from '../../src/telemetry'
 
 test('parseResponse()', (t): void => {
   t.test('Should return Success for 200 status codes', (t): void => {
