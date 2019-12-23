@@ -27,6 +27,12 @@ interface ParsedResponse {
   error?: Error
 }
 
+/**
+ * Returns the recommended action to take based on the response
+ * from the New Relic endpoint.
+ * @param err
+ * @param res
+ */
 export function parseResponse(err: Error, res: IncomingMessage): ParsedResponse {
   if (err) {
     return parseError(err)

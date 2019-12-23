@@ -7,10 +7,6 @@ interface CommonMetricData {
   'interval.ms'?: number
 }
 
-// TODO: Consider ability to send MetricBatch purely via interface. Would
-// export in that case.
-// TODO: Rename to avoid 'payload'. Find clear wording between interface
-// and class.
 interface MetricBatchPayload {
   common?: CommonMetricData
   metrics: Metric[]
