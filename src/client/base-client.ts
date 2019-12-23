@@ -91,7 +91,13 @@ export abstract class BaseClient<T> {
   }
 
   public static getPackageVersion = function(): string {
-    return require('../../package.json').version
+    let version
+    try {
+      version = require('../../../package.json').version
+    } catch (e) {
+      version = require('../../package.json').version
+    }
+    return version
   }
 
   protected _sendData(
