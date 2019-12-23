@@ -107,7 +107,6 @@ export abstract class BaseClient<T> {
     payload: string,
     callback: (error: Error, response: IncomingMessage, body: string) => void
   ): void {
-    // TODO: avoid compression for smaller amounts of data?
     zlib.gzip(payload, (err, compressed): void => {
       if (err) {
         callback(err, null, null)

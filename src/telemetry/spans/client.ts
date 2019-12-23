@@ -9,7 +9,15 @@ const SPAN_DATA_FORMAT_VERSION = 1
 const INVALID_KEY_MESSAGE = 'A valid key must be provided for inserting spans.'
 
 export interface SpanClientOptions {
+  /**
+   * API key with insert access used to authenticate the request.
+   * For more information on creating keys, please see:
+   * https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register
+   */
   apiKey: string
+  /**
+   * Optional host override for trace endpoint.
+   */
   host?: string
 }
 
