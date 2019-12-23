@@ -1,5 +1,5 @@
 import test from 'tape'
-import { SpanBatch } from '../../../src/client/spans/batch'
+import { SpanBatch } from '../../../src/telemetry/spans/batch'
 
 test('Span batch', (t): void => {
   t.test('sets properties on initialization', (t): void => {
@@ -21,7 +21,7 @@ test('Span batch', (t): void => {
 
       const batch = new SpanBatch(attributes)
 
-      t.equal(batch.common.attributes['service.name'], 
+      t.equal(batch.common.attributes['service.name'],
         'serviceName', 'sets service.name attribute')
       t.equal(batch.common.attributes.name, 'name', 'sets name attribute')
       t.equal(batch.common.attributes.host, 'with the most', 'sets host attribute')

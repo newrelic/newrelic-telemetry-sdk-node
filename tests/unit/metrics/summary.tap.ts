@@ -1,5 +1,5 @@
 import test from 'tape'
-import { SummaryMetric } from '../../../src/client/metrics/summary'
+import { SummaryMetric } from '../../../src/telemetry/metrics/summary'
 
 test('Summary metrics', (t): void => {
   t.test('should accept optional non-name parameters', (t): void => {

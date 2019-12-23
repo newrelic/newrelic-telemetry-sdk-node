@@ -1,6 +1,6 @@
 import https, { RequestOptions } from 'https'
 import { OutgoingHttpHeaders, IncomingMessage } from 'http'
-import { Logger, NoOpLogger } from '../common/'
+import { Logger, NoOpLogger } from '../common'
 
 import zlib from 'zlib'
 import url from 'url'
@@ -60,10 +60,11 @@ export class RequestResponseError extends Error {
 }
 
 export abstract class BaseClient<T> {
+  private static packageVersion: string
+
   private product: string
   private productVersion: string
   private userAgentHeader: string
-
   public logger: Logger
 
   public constructor(logger: Logger = new NoOpLogger()) {
@@ -90,8 +91,15 @@ export abstract class BaseClient<T> {
     return this.userAgentHeader
   }
 
-  public static getPackageVersion = function(): string {
-    return require('../../package.json').version
+  public static getPackageVersion(): string {
+    if (!BaseClient.packageVersion) {
+      try {
+        BaseClient.packageVersion = require('../../../package.json').version
+      } catch (e) {
+        BaseClient.packageVersion = require('../../package.json').version
+      }
+    }
+    return BaseClient.packageVersion
   }
 
   protected _sendData(
@@ -99,7 +107,6 @@ export abstract class BaseClient<T> {
     payload: string,
     callback: (error: Error, response: IncomingMessage, body: string) => void
   ): void {
-    // TODO: avoid compression for smaller amounts of data?
     zlib.gzip(payload, (err, compressed): void => {
       if (err) {
         callback(err, null, null)

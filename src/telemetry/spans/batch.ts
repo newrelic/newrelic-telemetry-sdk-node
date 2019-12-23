@@ -5,10 +5,6 @@ interface CommonSpanData {
   attributes?: AttributeMap
 }
 
-// TODO: Consider ability to send SpanBatch purely via interface. Would
-// export in that case.
-// TODO: Rename to avoid 'payload'. Find clear wording between interface
-// and class.
 interface SpanBatchPayload {
   spans?: SpanData[]
   common?: CommonSpanData
