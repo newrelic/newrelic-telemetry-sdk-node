@@ -23,7 +23,7 @@ Once installed, you can get started with a simple program that will send an indi
 
 ## Key Concepts
 
-The Telemetry SDK provider you, the end-user-programmer, with a _Client_ that sends _Spans_ or _Metrics_ to New Relic.  Clients can send Spans and Metrics to New Relic individually, or via batches.  Batches (a _MetricBatch_ or _SpanBatch_ object) collect individual metrics together for later sending.
+The Telemetry SDK provider you, the end-user-programmer, with a _Client_ that sends _Spans_ or _Metrics_ to New Relic.  Individual Metrics and Spans are collected together into batches (via a _MetricBatch_ or _SpanBatch_ object), and clients send these batches.
 
 In addition to the examples below, the integration tests contains a number of examples that show how clients, metrics, spans, and batches are all used.
 
