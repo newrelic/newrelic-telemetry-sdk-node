@@ -1,6 +1,6 @@
 import https, { RequestOptions } from 'https'
 import { OutgoingHttpHeaders, IncomingMessage } from 'http'
-import { Logger, NoOpLogger } from '../common/'
+import { Logger, NoOpLogger } from '../common'
 
 import zlib from 'zlib'
 import url from 'url'

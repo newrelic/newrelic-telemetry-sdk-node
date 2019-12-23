@@ -1,3 +1,4 @@
-import * as client from './src/client'
+import * as telemetry from './src/telemetry'
+import * as common from './src/common'
 
-export { client }
+export { telemetry, common }
