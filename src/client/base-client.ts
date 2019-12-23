@@ -60,10 +60,11 @@ export class RequestResponseError extends Error {
 }
 
 export abstract class BaseClient<T> {
+  private static packageVersion: string
+
   private product: string
   private productVersion: string
   private userAgentHeader: string
-  private packageVersion: string
   public logger: Logger
 
   public constructor(logger: Logger = new NoOpLogger()) {
@@ -90,15 +91,15 @@ export abstract class BaseClient<T> {
     return this.userAgentHeader
   }
 
-  public static getPackageVersion = function(): string {
-    if (!this.packageVersion) {
+  public static getPackageVersion(): string {
+    if (!BaseClient.packageVersion) {
       try {
-        this.packageVersion = require('../../../package.json').version
+        BaseClient.packageVersion = require('../../../package.json').version
       } catch (e) {
-        this.packageVersion = require('../../package.json').version
+        BaseClient.packageVersion = require('../../package.json').version
       }
     }
-    return this.packageVersion
+    return BaseClient.packageVersion
   }
 
   protected _sendData(
