@@ -17,7 +17,7 @@ Once you have this key in place, you can install the `@newrelic/telemetry-sdk` v
 
     $ npm install @newrelic/telemetry-sdk
 
-Once installed, you can get started with a simple program that will send an individual metric to New Relic.
+Once installed, you can get started with a simple program that will create a metric, record one occurrence of that metric, and then send it on to New Relic.
 
     //...
 
@@ -29,7 +29,7 @@ In addition to the examples below, the integration tests contains a number of ex
 
 ## Span Overview and Examples
 
-To get stared with spans, use code similar to the following.
+To get stared with spans, you'll use code similar to the following.
 
     // @TODO: Typescript or Javascript?  Dependant on how we publish
     // code samples that shows how to instantiate a span, add it to
