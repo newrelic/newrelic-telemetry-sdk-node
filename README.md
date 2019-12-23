@@ -17,9 +17,37 @@ Once you have this key in place, you can install the `@newrelic/telemetry-sdk` v
 
     $ npm install @newrelic/telemetry-sdk
 
-Once installed, you can get started with a simple program that will create a metric, record one occurrence of that metric, and then send it on to New Relic.
+Once installed, you can get started with a simple program that will create a metric, record one occurrence of that metric, and then send that metrics to New Relic in a batch.
 
-    //...
+    const {MetricBatch,CountMetric,MetricClient}
+      = require('@newrelic/telemetry-sdk').client.metrics
+
+    // create our client using the metrics API key
+    const client = new MetricClient({
+      apiKey: 'GU91iNDrgeSDBc8_-A_a1FaEOklqGGhB',
+      host: 'staging-metric-api.newrelic.com'
+      // apiKey: 'abc...123'       // your metrics API key
+      //                           // https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/introduction-metric-api#access-requirements
+    })
+
+    // create the metric object
+    const metric = new CountMetric('our-metric')
+
+    // record a single occurance of this metric
+    metric.record()
+
+
+    // create a batch and add our metric
+    const batch = new MetricBatch(
+      {},              // attributes (or "tags") to send with metric
+      Date.now(),      // timestamp
+      1000             // interval -- how offten we're sending this data in milliseconds
+    )
+    batch.addMetric(metric)
+
+    client.send(batch, function(err, res, body) {
+      console.log(res.statusCode)
+    })
 
 ## Key Concepts
 
