@@ -4,15 +4,15 @@ import uuidv4 from 'uuid/v4'
 import {
   SummaryMetric,
   MetricBatch
-} from '../../src/client/metrics'
+} from '../../src/telemetry/metrics'
 
 import {
   Span,
   SpanBatch,
-} from '../../src/client/spans'
+} from '../../src/telemetry/spans'
 
-import {LIMIT as METRIC_LIMIT} from '../../src/client/metrics/batch'
-import {LIMIT as SPAN_LIMIT} from '../../src/client/spans/batch'
+import {LIMIT as METRIC_LIMIT} from '../../src/telemetry/metrics/batch'
+import {LIMIT as SPAN_LIMIT} from '../../src/telemetry/spans/batch'
 
 test('test limits on batches', (t): void => {
   t.test('test metric limits', (t): void => {

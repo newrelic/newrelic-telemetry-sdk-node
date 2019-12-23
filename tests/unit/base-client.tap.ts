@@ -1,6 +1,6 @@
 import test from 'tape'
 import semver from 'semver'
-import {BaseClient, SendCallback} from '../../src/client/base-client'
+import {BaseClient, SendCallback} from '../../src/telemetry/base-client'
 
 class MockBatch {
 }

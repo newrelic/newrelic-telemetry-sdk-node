@@ -1,5 +1,5 @@
 import test from 'tape'
-import { GaugeMetric } from '../../../src/client/metrics/gauge'
+import { GaugeMetric } from '../../../src/telemetry/metrics/gauge'
 
 test('Gauge metrics', (t): void => {
   function recentTimestamp(t: number, range: number = 5000): boolean {

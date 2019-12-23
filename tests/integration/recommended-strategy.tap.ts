@@ -7,7 +7,7 @@ import {
   metrics,
   RecommendedAction,
   RecommendedStrategyOptions
-} from '../../src/client'
+} from '../../src/telemetry'
 
 const FAKE_HOST = 'fakehost.newrelic.com'
 const METRIC_PATH = '/metric/v1'

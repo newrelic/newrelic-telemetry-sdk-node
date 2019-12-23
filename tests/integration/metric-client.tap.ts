@@ -11,7 +11,7 @@ import {
   Metric,
   MetricType,
   MetricClientOptions
-} from '../../src/client/metrics'
+} from '../../src/telemetry/metrics'
 
 const metricConfig: MetricClientOptions = {
   apiKey: process.env.TEST_API_KEY,
