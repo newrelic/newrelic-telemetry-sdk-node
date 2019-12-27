@@ -11,13 +11,13 @@ The Telemetry SDK serves as a foundation for getting open standards based teleme
 
 ## Getting Started
 
-To get started with the telemetry SDK, you'll need a New Relic Insert API key. If you need help finding or generating this (or any) API key, [our docs have you covered](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys).
+To get started with the Telemetry SDK, you'll need a New Relic Insert API key. If you need help finding or generating this (or any) API key, [our docs have you covered](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys).
 
-Once you have this key in place, you can install the `@newrelic/telemetry-sdk` via `npm` (or your preferred package manager)
+Once you have this key in place, you can install the `@newrelic/telemetry-sdk` package via `npm` (or your preferred package manager)
 
     $ npm install @newrelic/telemetry-sdk
 
-Once installed, you can get started with a simple program that will create a metric, record one occurrence of that metric, and then send that metrics to New Relic in a batch.
+Once installed, you can get started with a simple program that will create a metric, record one occurrence of that metric, and then send that metric to New Relic in a batch.
 
 ```javascript
     const {MetricBatch,CountMetric,MetricClient}
@@ -51,7 +51,7 @@ Once installed, you can get started with a simple program that will create a met
 
 ## Key Concepts
 
-The Telemetry SDK provider you, the end-user-programmer, with a _Client_ that sends _Spans_ or _Metrics_ to New Relic.  Individual Metrics and Spans are collected together into batches (via a _MetricBatch_ or _SpanBatch_ object), and clients send these batches.
+The Telemetry SDK provides you, the end-user-programmer, with a _Client_ that sends _Spans_ or _Metrics_ to New Relic.  Individual Metrics and Spans are collected together into batches (via a _MetricBatch_ or _SpanBatch_ object), and clients send these batches.
 
 In addition to the examples below, the [integration tests](https://github.com/newrelic/newrelic-telemetry-sdk-node/tree/master/tests/integration) contains a number of examples that show how clients, metrics, spans, and batches are all used.
 
@@ -159,11 +159,9 @@ You can learn more about each individual metric type [via the New Relic Docs Sit
     const summary = new SummaryMetric(...)
 ```
 
-The Telemetry SDK provides you with a client and batch objects for sending multiple spans to New Relic in a single HTTPS request.  Where and how you use these objects in your metric exporters is up to you.
-
 ## Further Reading
 
-If you're intersted in learning more about the New Relic metrics and trace APIs that the Telemetry SDK sits on top of, the following links will be of interest.
+If you're interested in learning more about the New Relic metrics and trace APIs that the Telemetry SDK sits on top of, the following links will be of interest.
 
 - [Metric API](https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/introduction-metric-api)
 - [Trace API](https://docs.newrelic.com/docs/understand-dependencies/distributed-tracing/trace-api/introduction-trace-api)
