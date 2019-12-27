@@ -57,9 +57,72 @@ In addition to the examples below, the integration tests contains a number of ex
 
 To get stared with spans, you'll use code similar to the following.
 
-    // @TODO: Typescript or Javascript?  Dependant on how we publish
-    // code samples that shows how to instantiate a span, add it to
-    // a batch, and then send that batch with a clients
+    const sdk = require('@newrelic/telemetry-sdk')
+    const {
+      SpanClient,
+      SpanClientOptions,
+      SpanBatch,
+      Span
+    } = require('@newrelic/telemetry-sdk').telemetry.spans
+    const uuidv4 = require('uuid/v4')
+
+    // create our client using the metrics API key
+    const client = new SpanClient({
+      apiKey: 'abc...123'       // your trace API key
+                                // https://docs.newrelic.com/docs/understand-dependencies/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api#new-relic-quick-start
+    })
+
+    const batch = new SpanBatch;
+
+    const traceId = Date.now().toString()
+    const parentId = uuidv4();
+
+    // create a parentSpan object
+    const parentSpan = new Span;
+    parentSpan['id']         = parentId;
+    parentSpan['trace.id']   = traceId;
+    parentSpan['timestamp']  = Date.now();
+    parentSpan['attributes'] = {
+      'name': 'firstSpan',
+      'service.name': 'node-sdk-example-entity',
+      'duration.ms': 10,
+    }
+
+    // then create some child spans, linking them to the
+    // parent via the parent.id attribute
+    const child1 = new Span;
+    child1['id']         = parentId;
+    child1['trace.id']   = uuidv4();
+    child1['timestamp']  = Date.now();
+    child1['attributes'] = {
+      'name': 'secondSpan',
+      'service.name': 'node-sdk-example-entity',
+      'duration.ms': 5,
+    }
+
+    // then create some child spans, linking them to the
+    // parent via the parent.id attribute
+    const child2 = new Span;
+    child2['id']         = parentId;
+    child2['trace.id']   = uuidv4();
+    child2['timestamp']  = Date.now();
+    child2['attributes'] = {
+      'name': 'thirdSpan',
+      'service.name': 'node-sdk-example-entity',
+      'parent.id': parentId,
+      'duration.ms': 22,
+    }
+
+    // add the spans to the batch
+    batch.addSpan(parentSpan)
+    batch.addSpan(child1)
+    batch.addSpan(child2)
+
+    // send the batch
+    client.send(batch, function(err, res, body) {
+      console.log(res.statusCode)
+    })
+
 
 The Telemetry SDK provides you with a client and batch objects for sending multiple spans to New Relic in a single HTTPS request.  Where and how you use these objects in your tracers/exporters is up to you.
 
@@ -79,10 +142,17 @@ The Telemetry SDK allows you to send three different Metric types to New Relic
 
 You can learn more about each individual metric type [via the New Relic Docs Site](https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/report-metrics-metric-api#supported-metric-types).  Each individual metric type has a corresponding type in the Telemetry SDK.
 
-    // @TODO: Typescript or Javascript?  Dependant on how we publish
-    // code samples that show how to instantiate a metric, add it to
-    // a batch, and then send that batch with a client.  Show example
-    // of each metric type
+    const {CountMetric, GaugeMetric, SummaryMetric} =
+      require('@newrelic/telemetry-sdk').telemetry.metrics;
+
+    // https://github.com/newrelic/newrelic-telemetry-sdk-node/blob/c678ebfbea6e09f35c30734615030dbc5f46dc12/src/telemetry/metrics/count.ts#L4
+    const counting = new CountMetric(...)
+
+    // https://github.com/newrelic/newrelic-telemetry-sdk-node/blob/c678ebfbea6e09f35c30734615030dbc5f46dc12/src/telemetry/metrics/gauge.ts#L4
+    const aGuage = new GuageMetric(...)
+
+    // https://github.com/newrelic/newrelic-telemetry-sdk-node/blob/c678ebfbea6e09f35c30734615030dbc5f46dc12/src/telemetry/metrics/summary.ts#L11
+    const summary = new SummaryMetric(...)
 
 The Telemetry SDK provides you with a client and batch objects for sending multiple spans to New Relic in a single HTTPS request.  Where and how you use these objects in your metric exporters is up to you.
 
