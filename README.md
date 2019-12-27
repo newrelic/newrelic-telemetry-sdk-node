@@ -21,7 +21,7 @@ Once installed, you can get started with a simple program that will create a met
 
 ```javascript
     const {MetricBatch,CountMetric,MetricClient}
-      = require('@newrelic/telemetry-sdk').client.metrics
+      = require('@newrelic/telemetry-sdk').telemetry.metrics
 
     // create our client using the metrics API key
     const client = new MetricClient({
