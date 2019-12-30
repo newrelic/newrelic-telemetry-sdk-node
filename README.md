@@ -94,20 +94,21 @@ To get stared with spans, you'll use code similar to the following.
     // then create some child spans, linking them to the
     // parent via the parent.id attribute
     const child1 = new Span;
-    child1['id']         = parentId;
-    child1['trace.id']   = uuidv4();
+    child1['id']         = uuidv4();
+    child1['trace.id']   = traceId;
     child1['timestamp']  = Date.now();
     child1['attributes'] = {
       'name': 'secondSpan',
       'service.name': 'node-sdk-example-entity',
+      'parent.id': parentId,
       'duration.ms': 5,
     }
 
     // then create some child spans, linking them to the
     // parent via the parent.id attribute
     const child2 = new Span;
-    child2['id']         = parentId;
-    child2['trace.id']   = uuidv4();
+    child2['id']         = uuidv4();
+    child2['trace.id']   = traceId;
     child2['timestamp']  = Date.now();
     child2['attributes'] = {
       'name': 'thirdSpan',
