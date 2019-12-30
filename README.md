@@ -25,8 +25,8 @@ Once installed, you can get started with a simple program that will create a met
 
     // create our client using the metrics API key
     const client = new MetricClient({
-      // apiKey: 'abc...123'       // your metrics API key
-      //                           // https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/introduction-metric-api#access-requirements
+      apiKey: 'abc...123'       // your metrics API key
+                                // https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/introduction-metric-api#access-requirements
     })
 
     // create the metric object
@@ -38,7 +38,10 @@ Once installed, you can get started with a simple program that will create a met
 
     // create a batch and add our metric
     const batch = new MetricBatch(
-      {},              // attributes (or "tags") to send with metric
+      {},              // attributes (or "tags") to send with
+                       // every metric in this batch (you can
+                       // also set attributes/tags on individual
+                       // metrics)
       Date.now(),      // timestamp
       1000             // interval -- how offten we're sending this data in milliseconds
     )
