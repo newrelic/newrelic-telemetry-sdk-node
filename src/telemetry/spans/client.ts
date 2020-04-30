@@ -3,6 +3,7 @@ import { SpanBatch } from './batch'
 import { Logger} from '../../common'
 
 const SPAN_HOST = 'trace-api.newrelic.com'
+const SPAN_PORT = 443
 const SPAN_PATH = '/trace/v1'
 const SPAN_DATA_FORMAT = 'newrelic'
 const SPAN_DATA_FORMAT_VERSION = 1
@@ -19,6 +20,10 @@ export interface SpanClientOptions {
    * Optional host override for trace endpoint.
    */
   host?: string
+  /**
+   * Optional port override for trace endpoint.
+   */
+  port?: number
 }
 
 export class SpanClient extends BaseClient<SpanBatch> {
@@ -40,7 +45,7 @@ export class SpanClient extends BaseClient<SpanBatch> {
       headers: headers,
       host: (options && options.host) || SPAN_HOST,
       pathname: SPAN_PATH,
-      port: 443
+      port: (options && options.port) || SPAN_PORT
     }
   }
 

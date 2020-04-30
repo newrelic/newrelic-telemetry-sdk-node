@@ -130,6 +130,16 @@ To get stared with spans, you'll use code similar to the following.
 
 The Telemetry SDK provides you with a client and batch objects for sending multiple spans to New Relic in a single HTTPS request.  Where and how you use these objects in your tracers/exporters is up to you.
 
+If you want to use the Telemetry SDK to send spans to an API endpoint other than the default, you can instantiate a `SpanClient` with a specific `host` and `port`.  This isn't something most users will *need* to do, but if you've received an alternative API endpoint from New Relic, or need to send data to a different URL, the `SpanClient` is able to accommodate you.
+
+```javascript
+const client = new SpanClient({
+      apiKey: 'abc...123',
+      host: 'example.com',
+      port: 8443
+    })
+```
+
 ## Metrics Overview and Examples
 
 The Telemetry SDK allows you to send three different Metric types to New Relic
