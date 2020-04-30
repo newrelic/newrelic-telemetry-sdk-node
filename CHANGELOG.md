@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1 (2020-04-30)
+## 0.2.0 (2020-04-30)
 
 * Custom `port` value can be set when instantiating `SpanClient`.
 * Addresses security vulnerabilities from package dependencies.
