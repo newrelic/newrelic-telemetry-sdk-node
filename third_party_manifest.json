@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Wed Dec 04 2019 17:02:09 GMT-0800 (Pacific Standard Time)",
+  "lastUpdated": "Thu Apr 30 2020 15:12:20 GMT-0700 (Pacific Daylight Time)",
   "projectName": "@newrelic/telemetry-sdk",
   "projectUrl": "https://github.com/newrelic/newrelic-telemetry-sdk-node/",
   "includeDev": true,
@@ -73,6 +73,19 @@
       "publisher": "Nicholas C. Zakas",
       "email": "nicholas+npm@nczconsulting.com"
     },
+    "nock@11.7.0": {
+      "name": "nock",
+      "version": "11.7.0",
+      "range": "^11.7.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/nock/nock",
+      "versionedRepoUrl": "https://github.com/nock/nock/tree/v11.7.0",
+      "licenseFile": "node_modules/nock/LICENSE",
+      "licenseUrl": "https://github.com/nock/nock/blob/v11.7.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Pedro Teixeira",
+      "email": "pedro.teixeira@gmail.com"
+    },
     "semver@6.3.0": {
       "name": "semver",
       "version": "6.3.0",
@@ -84,15 +97,15 @@
       "licenseUrl": "https://github.com/npm/node-semver/blob/v6.3.0/LICENSE",
       "licenseTextSource": "file"
     },
-    "tape@4.11.0": {
+    "tape@4.13.2": {
       "name": "tape",
-      "version": "4.11.0",
-      "range": "^4.10.1",
+      "version": "4.13.2",
+      "range": "^4.13.2",
       "licenses": "MIT",
       "repoUrl": "https://github.com/substack/tape",
-      "versionedRepoUrl": "https://github.com/substack/tape/tree/v4.11.0",
+      "versionedRepoUrl": "https://github.com/substack/tape/tree/v4.13.2",
       "licenseFile": "node_modules/tape/LICENSE",
-      "licenseUrl": "https://github.com/substack/tape/blob/v4.11.0/LICENSE",
+      "licenseUrl": "https://github.com/substack/tape/blob/v4.13.2/LICENSE",
       "licenseTextSource": "file",
       "publisher": "James Halliday",
       "email": "mail@substack.net",
