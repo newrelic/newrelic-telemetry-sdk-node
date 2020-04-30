@@ -17,17 +17,18 @@ code, the source code can be found at [https://github.com/newrelic/newrelic-tele
 
 **[devDependencies](#devDependencies)**
 
+* [@types/semver](#typessemver)
 * [@types/tape](#typestape)
 * [@types/uuid](#typesuuid)
-* [@types/semver](#typessemver)
 * [@typescript-eslint/eslint-plugin](#typescript-eslinteslint-plugin)
 * [@typescript-eslint/parser](#typescript-eslintparser)
 * [eslint](#eslint)
+* [nock](#nock)
+* [semver](#semver)
 * [tape](#tape)
 * [ts-node](#ts-node)
 * [typescript](#typescript)
 * [uuid](#uuid)
-* [semver](#semver)
 
 
 ## dependencies
@@ -35,9 +36,38 @@ code, the source code can be found at [https://github.com/newrelic/newrelic-tele
 
 ## devDependencies
 
+### @types/semver
+
+This product includes source derived from [@types/semver](https://github.com/DefinitelyTyped/DefinitelyTyped) ([v6.2.0](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/7f9ef75bffd7ea782bfaf98ffd16c1bdcf2fcbb0)), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/7f9ef75bffd7ea782bfaf98ffd16c1bdcf2fcbb0/LICENSE):
+
+```
+    MIT License
+
+    Copyright (c) Microsoft Corporation. All rights reserved.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+```
+
 ### @types/tape
 
-This product includes source derived from [@types/tape](https://github.com/DefinitelyTyped/DefinitelyTyped), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
+This product includes source derived from [@types/tape](https://github.com/DefinitelyTyped/DefinitelyTyped) ([v4.2.33](https://github.com/DefinitelyTyped/DefinitelyTyped/)), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
 
 ```
     MIT License
@@ -66,36 +96,7 @@ This product includes source derived from [@types/tape](https://github.com/Defin
 
 ### @types/uuid
 
-This product includes source derived from [@types/uuid](https://github.com/DefinitelyTyped/DefinitelyTyped), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
-
-```
-    MIT License
-
-    Copyright (c) Microsoft Corporation. All rights reserved.
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE
-
-```
-
-### @types/semver
-
-This product includes source derived from [@types/semver](https://github.com/DefinitelyTyped/DefinitelyTyped), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
+This product includes source derived from [@types/uuid](https://github.com/DefinitelyTyped/DefinitelyTyped) ([v3.4.6](https://github.com/DefinitelyTyped/DefinitelyTyped/)), distributed under the [MIT License](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE):
 
 ```
     MIT License
@@ -208,9 +209,38 @@ THE SOFTWARE.
 
 ```
 
+### nock
+
+This product includes source derived from [nock](https://github.com/nock/nock) ([v11.7.0](https://github.com/nock/nock/tree/v11.7.0)), distributed under the [MIT License](https://github.com/nock/nock/blob/v11.7.0/LICENSE):
+
+```
+MIT License
+
+Copyright (c) 2011-2019 Pedro Teixeira and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
 ### semver
 
-This product includes source derived from [semver](https://github.com/npm/node-semver), distributed under the [ISC License](https://github.com/npm/node-semver/blob/master/LICENSE):
+This product includes source derived from [semver](https://github.com/npm/node-semver) ([v6.3.0](https://github.com/npm/node-semver/tree/v6.3.0)), distributed under the [ISC License](https://github.com/npm/node-semver/blob/v6.3.0/LICENSE):
 
 ```
 The ISC License
@@ -228,11 +258,12 @@ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 ```
 
 ### tape
 
-This product includes source derived from [tape](https://github.com/substack/tape) ([v4.11.0](https://github.com/substack/tape/tree/v4.11.0)), distributed under the [MIT License](https://github.com/substack/tape/blob/v4.11.0/LICENSE):
+This product includes source derived from [tape](https://github.com/substack/tape) ([v4.13.2](https://github.com/substack/tape/tree/v4.13.2)), distributed under the [MIT License](https://github.com/substack/tape/blob/v4.13.2/LICENSE):
 
 ```
 MIT License
@@ -349,27 +380,6 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-Version 2.0, January 2004
-
-http://www.apache.org/licenses/
-
-TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-
-1. Definitions.
-
-"License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
-
-"Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
-
-"Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
-
-"You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
-
-"Source" form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.
-
-"Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.
-
-"Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).
 ```
 
 ### uuid
