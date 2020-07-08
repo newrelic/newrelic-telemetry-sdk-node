@@ -27,6 +27,9 @@ workflows:
       - integration-tests:
           version: 12
           name: "Integration (Node 12)"
+      - server-integration-tests:
+          version: 12
+          name: "Server Integration (Node 12)"
 
 jobs:
   build:
@@ -70,6 +73,20 @@ jobs:
           command: |
             npm install
             npm run integration
+
+  server-integration-tests:
+    parameters:
+      version:
+        type: integer
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: "Integration Tests (Node << parameters.version >>)"
+          command: |
+            npm install
+            npm run server-integration
 
   unit-tests:
     parameters:
