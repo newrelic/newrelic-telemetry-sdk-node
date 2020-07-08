@@ -15,7 +15,7 @@ const spanConfig: SpanClientOptions = {
   host: process.env.TEST_SPAN_HOST || 'staging-trace-api.newrelic.com'
 }
 
-test('Span Client Integration Tests', (t): void => {
+test('Span Client - Server Integration Tests', (t): void => {
   t.ok(spanConfig.apiKey, 'TEST_API_KEY must be configured for tests')
 
   t.test('Should send batch of individually added spans', (t): void => {

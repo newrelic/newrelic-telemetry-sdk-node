@@ -18,7 +18,7 @@ const metricConfig: MetricClientOptions = {
   host: process.env.TEST_METRIC_HOST || 'staging-metric-api.newrelic.com'
 }
 
-test('Metric Client Integration Tests', (t): void => {
+test('Metric Client - Server Integration Tests', (t): void => {
   t.ok(metricConfig.apiKey, 'TEST_API_KEY must be configured for tests')
 
   t.test('Should send batch of individually added summary metrics', (t): void => {
