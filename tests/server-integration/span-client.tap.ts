@@ -12,7 +12,7 @@ import {
 
 const spanConfig: SpanClientOptions = {
   apiKey: process.env.TEST_API_KEY,
-  host: process.env.TEST_SPAN_HOST || 'staging-trace-api.newrelic.com'
+  host: process.env.TEST_SPAN_HOST
 }
 
 test('Span Client - Server Integration Tests', (t): void => {

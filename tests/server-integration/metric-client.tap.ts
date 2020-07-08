@@ -15,7 +15,7 @@ import {
 
 const metricConfig: MetricClientOptions = {
   apiKey: process.env.TEST_API_KEY,
-  host: process.env.TEST_METRIC_HOST || 'staging-metric-api.newrelic.com'
+  host: process.env.TEST_METRIC_HOST
 }
 
 test('Metric Client - Server Integration Tests', (t): void => {
