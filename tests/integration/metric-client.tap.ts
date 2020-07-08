@@ -25,6 +25,7 @@ const metricConfig: MetricClientOptions = {
 
 test('Metric Client - Integration Tests', (t): void => {
   let rawRequestBody: string = null
+
   function nockRequestHost(): void {
     nock.disableNetConnect()
 
@@ -63,7 +64,7 @@ test('Metric Client - Integration Tests', (t): void => {
       decodeRequestBody(rawRequestBody, (decodeError, data): void => {
         t.error(decodeError)
 
-        const { common, metrics} = data[0] as MetricBatch
+        const { common, metrics } = data[0] as MetricBatch
 
         t.equal(common['interval.ms'], expectedInterval)
         t.ok(common.timestamp)
@@ -110,7 +111,7 @@ test('Metric Client - Integration Tests', (t): void => {
       decodeRequestBody(rawRequestBody, (decodeError, data): void => {
         t.error(decodeError)
 
-        const { common, metrics} = data[0] as MetricBatch
+        const { common, metrics } = data[0] as MetricBatch
 
         t.equal(common['interval.ms'], expectedInterval)
         t.ok(common.timestamp)
@@ -157,7 +158,7 @@ test('Metric Client - Integration Tests', (t): void => {
       decodeRequestBody(rawRequestBody, (decodeError, data): void => {
         t.error(decodeError)
 
-        const { common, metrics} = data[0] as MetricBatch
+        const { common, metrics } = data[0] as MetricBatch
 
         t.equal(common['interval.ms'], expectedInterval)
         t.ok(common.timestamp)
@@ -204,7 +205,7 @@ test('Metric Client - Integration Tests', (t): void => {
       decodeRequestBody(rawRequestBody, (decodeError, data): void => {
         t.error(decodeError)
 
-        const { common, metrics} = data[0] as MetricBatch
+        const { common, metrics } = data[0] as MetricBatch
 
         t.equal(common['interval.ms'], expectedInterval)
         t.ok(common.timestamp)
@@ -260,7 +261,7 @@ test('Metric Client - Integration Tests', (t): void => {
       decodeRequestBody(rawRequestBody, (decodeError, data): void => {
         t.error(decodeError)
 
-        const { common, metrics} = data[0] as MetricBatch
+        const { common, metrics } = data[0] as MetricBatch
 
         t.equal(common['interval.ms'], expectedInterval)
         t.ok(common.timestamp)
