@@ -1,6 +1,6 @@
 # Server Integration Tests
 
-These tests communicate with NR servers for inserting metrics and spans and also query the Insights API to check for potential errors.
+These tests communicate with New Relic servers for inserting metrics and spans and also query the Insights API to check for potential errors.
 
 To function locally, they require several environment variables to be set. Specific values will vary based on account and also environment.
 
@@ -15,4 +15,4 @@ TEST_API_KEY=<insights insert (not query) key>
 TEST_ACCOUNT_NUM=<account # matching keys>
 ```
 
-To run the tests, execute: `npm run server-integration`
+To run the tests, execute: `npm run server-integration`.
