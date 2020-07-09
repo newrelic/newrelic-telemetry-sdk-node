@@ -1,0 +1,36 @@
+name: Server Integration Tests
+
+on:
+    # Run on pushes to any branch. Not triggered for forked repo PRs.
+  push:
+  schedule:
+    # Run once a day at 9AM PDT (16 UTC) on week days (1-5).
+    # Last commit on default branch.
+    # https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule
+    - cron:  '0 16 * * 1-5'
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: npm ci
+    - name: Run Server Integration Tests
+      run: npm run server-integration
+      env:
+        TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+        TEST_METRIC_HOST: ${{ secrets.TEST_METRIC_HOST }}
+        TEST_SPAN_HOST: ${{ secrets.TEST_SPAN_HOST }}
+        TEST_QUERY_KEY: ${{ secrets.TEST_QUERY_KEY }}
+        TEST_ACCOUNT_NUM: ${{ secrets.TEST_ACCOUNT_NUM }}
+        TEST_INSIGHTS_HOST: ${{ secrets.TEST_INSIGHTS_HOST }}
