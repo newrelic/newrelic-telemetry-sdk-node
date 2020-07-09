@@ -10,7 +10,7 @@ on:
     - cron:  '0 16 * * 1-5'
 
 jobs:
-  smoke:
+  server-integration:
     runs-on: ubuntu-latest
 
     strategy:
