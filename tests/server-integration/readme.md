@@ -15,4 +15,4 @@ TEST_API_KEY=<insights insert (not query) key>
 TEST_ACCOUNT_NUM=<account # matching keys>
 ```
 
-To run the tests, execute: `npm run server-integration`
+To run the tests, execute: `npm run server-integration`.
