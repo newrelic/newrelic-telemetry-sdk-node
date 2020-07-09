@@ -46,7 +46,7 @@ export function getNrIntegrationErrors(
   feature: NewRelicFeature,
   cb: (error: Error, integrationErrors?: object[]) => void
 ): void {
-  const host = process.env.TEST_INSIGHTS_HOST || 'staging-insights-api.newrelic.com'
+  const host = process.env.TEST_INSIGHTS_HOST
   const accountNumber = process.env.TEST_ACCOUNT_NUM
 
   const path = `/v1/accounts/${accountNumber}/query?` +

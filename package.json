@@ -13,6 +13,7 @@
     "prepare": "npm run build",
     "unit": "ts-node ./node_modules/.bin/tape tests/unit/*.tap.ts tests/unit/**/*.tap.ts",
     "integration": "ts-node ./node_modules/.bin/tape tests/integration/**/*.tap.ts",
+    "server-integration": "ts-node ./node_modules/.bin/tape tests/server-integration/**/*.tap.ts",
     "test": "npm run build && npm run unit && npm run integration"
   },
   "author": "New Relic Node.js Agent Team <nodejs@newrelic.com>",
@@ -29,7 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "eslint": "^5.14.1",
-    "nock": "^11.7.0",
+    "nock": "^11.9.1",
     "semver": "^6.3.0",
     "tape": "^4.13.2",
     "ts-node": "^8.0.2",
