@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "lint": "eslint 'index.ts' 'src/**' 'tests/**'",
+    "lint": "eslint 'index.ts' 'src/**/*.ts' 'tests/**/*.ts'",
     "prepare": "npm run build",
     "unit": "ts-node ./node_modules/.bin/tape tests/unit/*.tap.ts tests/unit/**/*.tap.ts",
     "integration": "ts-node ./node_modules/.bin/tape tests/integration/**/*.tap.ts",
