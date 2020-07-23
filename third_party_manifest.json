@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Thu Apr 30 2020 15:12:20 GMT-0700 (Pacific Daylight Time)",
+  "lastUpdated": "Thu Jul 23 2020 10:17:19 GMT-0700 (Pacific Daylight Time)",
   "projectName": "@newrelic/telemetry-sdk",
   "projectUrl": "https://github.com/newrelic/newrelic-telemetry-sdk-node/",
   "includeDev": true,
@@ -73,15 +73,15 @@
       "publisher": "Nicholas C. Zakas",
       "email": "nicholas+npm@nczconsulting.com"
     },
-    "nock@11.7.0": {
+    "nock@11.9.1": {
       "name": "nock",
-      "version": "11.7.0",
-      "range": "^11.7.0",
+      "version": "11.9.1",
+      "range": "^11.9.1",
       "licenses": "MIT",
       "repoUrl": "https://github.com/nock/nock",
-      "versionedRepoUrl": "https://github.com/nock/nock/tree/v11.7.0",
+      "versionedRepoUrl": "https://github.com/nock/nock/tree/v11.9.1",
       "licenseFile": "node_modules/nock/LICENSE",
-      "licenseUrl": "https://github.com/nock/nock/blob/v11.7.0/LICENSE",
+      "licenseUrl": "https://github.com/nock/nock/blob/v11.9.1/LICENSE",
       "licenseTextSource": "file",
       "publisher": "Pedro Teixeira",
       "email": "pedro.teixeira@gmail.com"
