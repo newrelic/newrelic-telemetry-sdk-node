@@ -211,7 +211,7 @@ THE SOFTWARE.
 
 ### nock
 
-This product includes source derived from [nock](https://github.com/nock/nock) ([v11.7.0](https://github.com/nock/nock/tree/v11.7.0)), distributed under the [MIT License](https://github.com/nock/nock/blob/v11.7.0/LICENSE):
+This product includes source derived from [nock](https://github.com/nock/nock) ([v11.9.1](https://github.com/nock/nock/tree/v11.9.1)), distributed under the [MIT License](https://github.com/nock/nock/blob/v11.9.1/LICENSE):
 
 ```
 MIT License
@@ -328,7 +328,7 @@ Apache License
 
 Version 2.0, January 2004
 
-http://www.apache.org/licenses/ 
+http://www.apache.org/licenses/
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -411,3 +411,9 @@ SOFTWARE.
 
 ```
 
+-----
+
+Portions copyright Node.js contributors. Depending on your existing libraries and package management settings,
+your systems may call externally maintained libraries in addition to those listed above.
+See [here](https://nodejs.org/en/docs/meta/topics/dependencies/) and [here](https://github.com/nodejs/node/blob/v4.3.1/LICENSE)
+for additional details regarding externally maintained libraries and certain related licenses and notices.”
