@@ -1,15 +1,17 @@
+[![Community Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/Community_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#community-project)
+
 # New Relic Telemetry SDK for NodeJS
 
 The New Relic NodeJS Telemetry SDK allows you to send telemetry data to New Relic from your application without a [traditional language agent](https://github.com/newrelic/node-newrelic).
 
 The Telemetry SDK serves as a foundation for getting open standards based telemetry data like [Open Census](https://opencensus.io/), [Open Tracing](https://opentracing.io/), and [Open Telemetry](https://opentelemetry.io/) into New Relic.  If you're building exporters or tracers based on these standards, you've come to the right place.
 
-## Prerequisites
+## Installation
+
+### Prerequisites
 
 - A New Relic Insights API Key
 - A NodeJS 10+ Runtime
-
-## Getting Started
 
 To get started with the Telemetry SDK, you'll need a New Relic Insert API key. If you need help finding or generating this (or any) API key, [our docs have you covered](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys).
 
@@ -52,13 +54,18 @@ Once installed, you can get started with a simple program that will create a met
     })
 ```
 
-## Key Concepts
+## Getting Started
+>[Simple steps to start working with the software similar to a "Hello World"]
+
+## Usage
+
+### Key Concepts
 
 The Telemetry SDK provides you, the end-user-programmer, with a _Client_ that sends _Spans_ or _Metrics_ to New Relic.  Individual Metrics and Spans are collected together into batches (via a _MetricBatch_ or _SpanBatch_ object), and clients send these batches.
 
 In addition to the examples below, the integration tests and server-integration tests contain a number of examples that show how clients, metrics, spans, and batches are all used.
 
-## Span Overview and Examples
+### Span Overview and Examples
 
 To get stared with spans, you'll use code similar to the following.
 
@@ -140,7 +147,7 @@ const client = new SpanClient({
     })
 ```
 
-## Metrics Overview and Examples
+### Metrics Overview and Examples
 
 The Telemetry SDK allows you to send three different Metric types to New Relic
 
@@ -170,33 +177,56 @@ You can learn more about each individual metric type [via the New Relic Docs Sit
     const summary = new SummaryMetric(...)
 ```
 
-## Further Reading
+### Further Reading
 
 If you're interested in learning more about the New Relic metrics and trace APIs that the Telemetry SDK sits on top of, the following links will be of interest.
 
 - [Metric API](https://docs.newrelic.com/docs/data-ingest-apis/get-data-new-relic/metric-api/introduction-metric-api)
 - [Trace API](https://docs.newrelic.com/docs/understand-dependencies/distributed-tracing/trace-api/introduction-trace-api)
 
-## Limits
+### Limits
 
 The New Relic Telemetry APIs are rate limited. Please reference the documentation for [New Relic Metrics API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api) and [New Relic Trace API Requirements and Limits](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/trace-api-general-requirements-limits) on the specifics of the rate limits.
 
-## Open Source License
-
-This project is distributed under the [Apache 2 license](LICENSE).
-
 ## Support
 
-New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR DEDICATED SUPPORT. Issues and contributions should be reported to the project here on GitHub.
+Should you need assistance with New Relic products, you are in good hands with several support channels.
 
-We encourage you to bring your experiences and questions to the [Explorers Hub](https://discuss.newrelic.com) where our community members collaborate on solutions and new ideas.
+If the issue has been confirmed as a bug or is a feature request, file a GitHub issue.
 
-## Issues / Enhancement Requests
+**Support Channels**
 
-Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
+* [New Relic Documentation](https://docs.newrelic.com/docs/telemetry-data-platform/get-started/capabilities/telemetry-sdks-send-custom-telemetry-data-new-relic): Comprehensive guidance for using our platform
+* [New Relic Community](https://discuss.newrelic.com/tags/nodeagent): The best place to engage in troubleshooting questions
+* [New Relic Developer](https://developer.newrelic.com/): Resources for building a custom observability applications
+* [New Relic University](https://learn.newrelic.com/): A range of online training for New Relic users of every level
 
-## Contributing
+## Privacy
 
-Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](CONTRIBUTING.md).
+At New Relic we take your privacy and the security of your information seriously, and are committed to protecting your information. We must emphasize the importance of not sharing personal data in public forums, and ask all users to scrub logs and diagnostic information for sensitive information, whether personal, proprietary, or otherwise.
 
-Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource+newrelic-telemetry-sdk-node@newrelic.com.
+We define “Personal Data” as any information relating to an identified or identifiable individual, including, for example, your name, phone number, post code or zip code, Device ID, IP address, and email address.
+
+For more information, review [New Relic’s General Data Privacy Notice](https://newrelic.com/termsandconditions/privacy).
+
+## Contribute
+
+We encourage your contributions to improve [project name]! Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. You only have to sign the CLA one time per project.
+
+If you have any questions, or to execute our corporate CLA (which is required if your contribution is on behalf of a company), drop us an email at opensource@newrelic.com.
+
+**A note about vulnerabilities**
+
+As noted in our [security policy](../../security/policy), New Relic is committed to the privacy and security of our customers and their data. We believe that providing coordinated disclosure by security researchers and engaging with the security community are important means to achieve our security goals.
+
+If you believe you have found a security vulnerability in this project or any of New Relic's products or websites, we welcome and greatly appreciate you reporting it to New Relic through [HackerOne](https://hackerone.com/newrelic).
+
+If you would like to contribute to this project, review [these guidelines](./CONTRIBUTING.md).
+
+To [all contributors](<https://github.com/newrelic/newrelic-telemetry-sdk-node/graphs/contributors), we thank you!  Without your contribution, this project would not be what it is today.  We also host a community project page dedicated to [New Relic Telemetry SDK (Node)](https://opensource.newrelic.com/projects/newrelic/newrelic-telemetry-sdk-node).
+
+## License
+
+`newrelic-telemetry-sdk-node` is licensed under the [Apache 2.0](http://apache.org/licenses/LICENSE-2.0.txt) License.
+
+
