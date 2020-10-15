@@ -54,9 +54,6 @@ Once installed, you can get started with a simple program that will create a met
     })
 ```
 
-## Getting Started
->[Simple steps to start working with the software similar to a "Hello World"]
-
 ## Usage
 
 ### Key Concepts
