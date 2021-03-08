@@ -168,7 +168,7 @@ You can learn more about each individual metric type [via the New Relic Docs Sit
     const counting = new CountMetric(...)
 
     // https://github.com/newrelic/newrelic-telemetry-sdk-node/blob/c678ebfbea6e09f35c30734615030dbc5f46dc12/src/telemetry/metrics/gauge.ts#L4
-    const aGuage = new GuageMetric(...)
+    const aGauge = new GaugeMetric(...)
 
     // https://github.com/newrelic/newrelic-telemetry-sdk-node/blob/c678ebfbea6e09f35c30734615030dbc5f46dc12/src/telemetry/metrics/summary.ts#L11
     const summary = new SummaryMetric(...)
