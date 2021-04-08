@@ -4,7 +4,8 @@ import { OutgoingHttpHeaders, IncomingMessage } from 'http'
 
 export enum NewRelicFeature {
   Metrics = 'Metrics',
-  DistributedTracing = 'Distributed%20Tracing'
+  DistributedTracing = 'Distributed%20Tracing',
+  EventApi = 'Event%20API'
 }
 
 export function verifyNrIntegrationErrors(

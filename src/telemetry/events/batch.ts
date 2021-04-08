@@ -30,7 +30,7 @@ export class EventBatch implements EventBatchPayload {
     this.events = events || []
     // if the client programmer passed us an array that's
     // too big, keep the first `LIMIT` items and
-    // then use addSpan to add the rest (making the later
+    // then use addEvent to add the rest (making the later
     // items subject to the adaptive sampling)
     if (this.events.length > LIMIT) {
       const remnant = this.events.splice(LIMIT)
