@@ -90,6 +90,11 @@ export function getNrIntegrationErrors(
     })
 
     res.on('end', (): void => {
+      if (res.statusCode >= 300) {
+        cb(new Error(`Status Error: ${res.statusCode}`))
+        return
+      }
+
       const parsed = JSON.parse(rawBody)
 
       const firstResult = parsed.results && parsed.results[0]
