@@ -4,7 +4,8 @@ import { OutgoingHttpHeaders, IncomingMessage } from 'http'
 
 export enum NewRelicFeature {
   Metrics = 'Metrics',
-  DistributedTracing = 'Distributed%20Tracing'
+  DistributedTracing = 'Distributed%20Tracing',
+  EventApi = 'Event%20API'
 }
 
 export function verifyNrIntegrationErrors(
@@ -24,7 +25,10 @@ export function verifyNrIntegrationErrors(
   )
 
   const parsedBody = JSON.parse(body)
-  const requestId = parsedBody.requestId
+  // Event API returns uuid and success items.
+  // Trace/Metrics return requestId.
+  // NRIntegrationError uses both for 'requestId'.
+  const requestId = parsedBody.requestId || parsedBody.uuid
 
   t.ok(requestId, 'Body should contain the request Id')
 
