@@ -51,7 +51,7 @@ test('Event Client - Server Integration Tests', (t): void => {
       t.ok(res)
       t.ok(body)
 
-      t.equal(res.statusCode, 202)
+      t.equal(res.statusCode, 200)
       verifyNrIntegrationErrors(t, NewRelicFeature.EventApi, body, t.end)
     })
   })
@@ -75,7 +75,7 @@ test('Event Client - Server Integration Tests', (t): void => {
       t.ok(res)
       t.ok(body)
 
-      t.equal(res.statusCode, 202)
+      t.equal(res.statusCode, 200)
       verifyNrIntegrationErrors(t, NewRelicFeature.EventApi, body, t.end)
     })
   })
@@ -97,7 +97,7 @@ test('Event Client - Server Integration Tests', (t): void => {
       t.ok(res)
       t.ok(body)
 
-      t.equal(res.statusCode, 202)
+      t.equal(res.statusCode, 200)
       verifyNrIntegrationErrors(t, NewRelicFeature.EventApi, body, t.end)
     })
   })
