@@ -6,7 +6,11 @@ test('EventBatch', (t): void => {
     const batch = new EventBatch()
 
     t.same(batch.events, [], 'sets events to empty array')
-    t.notOk(batch.common, 'Does not add common property if no attributes provided')
+    t.same(
+      batch.common,
+      { attributes: {} },
+      'sets empty common property if no attributes provided'
+    )
     t.end()
   })
 
