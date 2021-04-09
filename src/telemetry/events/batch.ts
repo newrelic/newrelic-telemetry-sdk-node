@@ -20,13 +20,7 @@ export class EventBatch implements EventBatchPayload {
     attributes?: AttributeMap,
     events?: EventData[]
   ) {
-    if (attributes) {
-      const common: CommonEventData = {}
-
-      common.attributes = attributes
-      this.common = common
-    }
-
+    this.common = {attributes: attributes || {}}
     this.events = events || []
     // if the client programmer passed us an array that's
     // too big, keep the first `LIMIT` items and
