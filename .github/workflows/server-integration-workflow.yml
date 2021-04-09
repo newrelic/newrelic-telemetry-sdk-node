@@ -31,6 +31,7 @@ jobs:
         TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
         TEST_METRIC_HOST: ${{ secrets.TEST_METRIC_HOST }}
         TEST_SPAN_HOST: ${{ secrets.TEST_SPAN_HOST }}
+        TEST_EVENT_HOST: ${{ secrects.TEST_EVENT_HOST }}
         TEST_QUERY_KEY: ${{ secrets.TEST_QUERY_KEY }}
         TEST_ACCOUNT_NUM: ${{ secrets.TEST_ACCOUNT_NUM }}
         TEST_INSIGHTS_HOST: ${{ secrets.TEST_INSIGHTS_HOST }}
