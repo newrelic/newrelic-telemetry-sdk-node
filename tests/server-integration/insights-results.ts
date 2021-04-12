@@ -2,10 +2,22 @@ import test from 'tape'
 import https, { RequestOptions } from 'https'
 import { OutgoingHttpHeaders, IncomingMessage } from 'http'
 
+const CHECK_RESULTS_DELAY_MS = 1000
+
 export enum NewRelicFeature {
   Metrics = 'Metrics',
   DistributedTracing = 'Distributed%20Tracing',
   EventApi = 'Event%20API'
+}
+
+interface NRIntegrationError {
+  apiKeyPrefix: string
+  category: string
+  message: string
+  name: string
+  newRelicFeature: string
+  requestId: string
+  timestamp: string
 }
 
 export function verifyNrIntegrationErrors(
@@ -32,17 +44,20 @@ export function verifyNrIntegrationErrors(
 
   t.ok(requestId, 'Body should contain the request Id')
 
-  getNrIntegrationErrors(requestId, feature, (error, integrationErrors): void => {
-    t.error(error, 'should not error grabbing results')
+  // Sometimes seems takes > 500ms for errors to show up in API query.
+  setTimeout((): void => {
+    getNrIntegrationErrors(requestId, feature, (error, integrationErrors): void => {
+      t.error(error, 'should not error grabbing results')
 
-    t.equal(
-      integrationErrors.length,
-      0,
-      `Should not have any integration errors ${JSON.stringify(integrationErrors)}`
-    )
+      t.equal(
+        integrationErrors.length,
+        0,
+        `Should not have any integration errors ${JSON.stringify(integrationErrors)}`
+      )
 
-    callback()
-  })
+      callback()
+    })
+  }, CHECK_RESULTS_DELAY_MS)
 }
 
 export function getNrIntegrationErrors(
@@ -90,12 +105,22 @@ export function getNrIntegrationErrors(
     })
 
     res.on('end', (): void => {
+      if (res.statusCode >= 300) {
+        cb(new Error(`Status Error: ${res.statusCode}`))
+        return
+      }
+
       const parsed = JSON.parse(rawBody)
 
       const firstResult = parsed.results && parsed.results[0]
-      const events = firstResult && firstResult.events
+      const events = firstResult && firstResult.events || []
 
-      cb(parsed.error, events || [])
+      events.forEach((errorEvent: NRIntegrationError): void => {
+        // It is just the prefix but obfuscating anyways.
+        errorEvent.apiKeyPrefix = '*****'
+      })
+
+      cb(parsed.error, events)
     })
   })
 
