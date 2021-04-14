@@ -13,10 +13,12 @@ const logConfig: LogClientOptions = {
   host: process.env.TEST_LOG_HOST
 }
 
+interface LogEvent { [key: string]: string }
+
 export function verifyLogs(
   t: test.Test,
   testId: string,
-  callback: () => void
+  callback: (logEvents?: LogEvent[]) => void
 ): void {
   t.ok(
     process.env.TEST_ACCOUNT_NUM,
@@ -30,15 +32,10 @@ export function verifyLogs(
 
   // Sometimes seems takes > 500ms for errors to show up in API query.
   setTimeout((): void => {
-    findLog(testId, (error, logEvents?: object[]): void => {
+    findLog(testId, (error, logEvents?: LogEvent[]): void => {
       t.error(error, 'should not error grabbing results')
 
-      t.equal(
-        logEvents.length,
-        2,
-      )
-
-      callback()
+      callback(logEvents)
     })
   }, LOGGING_DELAY_MS)
 }
@@ -115,19 +112,19 @@ test('Log Client - Server Integration Tests', (t): void => {
       'testId': testId
     }
 
+    const log1Ts = Date.now() - 10
     const log1 = new Log(
       'log1',
-      Date.now(),
+      log1Ts,
       {
-        'name': 'firstTest',
-        'service.name': 'overridden-node-sdk-test-entity',
+        aProp: 'someValue',
       })
 
+    const log2Ts = log1Ts + 1
     const log2 = new Log(
       'log2',
-      Date.now(),
+      log2Ts,
       {
-        name: 'secondTest',
         anotherProp: 'anotherValue',
       })
 
@@ -135,13 +132,37 @@ test('Log Client - Server Integration Tests', (t): void => {
 
     const client = new LogClient(logConfig)
 
+    const resultAssertions = (logEvents?: LogEvent[]): void => {
+      t.ok(logEvents, 'Falsy logEvents')
+      t.equal(logEvents.length, 2, 'unexpected log event count')
+
+      let event1 = logEvents[0]
+      let event2 = logEvents[1]
+      if (event1.timestamp > event2.timestamp) {
+        const temp = event2
+        event2 = event1
+        event1 = temp
+      }
+
+      t.equal(event1.timestamp, log1Ts, 'event 1 timestamp')
+      t.equal(event1.name, 'commonName', 'event 1 name')
+      t.equal(event1.aProp, 'someValue',
+        'event 1 aProp')
+
+      t.equal(event2.timestamp, log2Ts, 'event 2 timestamp')
+      t.equal(event2.name, 'commonName', 'event 2 name')
+      t.equal(event2.anotherProp, 'anotherValue',
+        'event 2 anotherProp')
+
+      t.end()
+    }
     client.send(batch, (err, res, body): void => {
       t.error(err)
       t.ok(res)
       t.ok(body)
 
       t.equal(res.statusCode, 202)
-      verifyLogs(t, testId, t.end)
+      verifyLogs(t, testId, resultAssertions)
     })
   })
 })
