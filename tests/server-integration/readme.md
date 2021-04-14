@@ -10,6 +10,7 @@ Here's the list of variables and what a few of the values may look like:
 TEST_INSIGHTS_HOST=insights-api.newrelic.com
 TEST_SPAN_HOST=trace-api.newrelic.com
 TEST_METRIC_HOST=metric-api.newrelic.com
+TEST_LOG_HOST=log-api.newrelic.com
 TEST_QUERY_KEY=<insights query (not insert) key>
 TEST_API_KEY=<insights insert (not query) key>
 TEST_ACCOUNT_NUM=<account # matching keys>
