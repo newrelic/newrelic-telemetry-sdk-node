@@ -1,8 +1,8 @@
 # CHANGELOG
 
 ## 0.4.0 (2021-04-15)
-* Adds support for the Event API. (Thank you @MattWhelan for the contribution)
-* Adds support for the New Relic Log API. (Thank you @kolanos for the contribution)
+* Adds support for the Event API. (Thank you @kolanos for the contribution)
+* Adds support for the New Relic Log API. (Thank you @MattWhelan for the contribution)
 * Fixed NRIntegrationError checking server test issues where status code >=300 would be treated as successful and cases where we'd check before errors were available.
 * Thank you @zekth for the typo fix contribution.
 
