@@ -6,7 +6,7 @@ import { OutgoingHttpHeaders, IncomingMessage } from 'http'
 import {Log, LogBatch, LogClient, LogClientOptions} from '../../src/telemetry/logs'
 
 
-const LOGGING_DELAY_MS = 2500
+const LOGGING_DELAY_MS = 2000
 
 const logConfig: LogClientOptions = {
   apiKey: process.env.TEST_API_KEY,
