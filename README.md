@@ -1,8 +1,14 @@
+_**In the next 3-6 months, we plan to EOL the New Relic Node.js Telemetry SDK. If you are using the Telemetry SDK to send OpenTelemetry data to New Relic, we recommend using the OpenTelemetry Collector with the New Relic Exporter as an alternative. You can find an example [here](https://github.com/newrelic/newrelic-opentelemetry-examples/tree/main/collector/nr-exporter-docker).**_
+
+<br />
+<br />
+<br />
+
 [![Community Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/Community_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#community-project)
 
-# New Relic Telemetry SDK for NodeJS
+# New Relic Telemetry SDK for Node.js
 
-The New Relic NodeJS Telemetry SDK allows you to send telemetry data to New Relic from your application without a [traditional language agent](https://github.com/newrelic/node-newrelic).
+The New Relic Node.js Telemetry SDK allows you to send telemetry data to New Relic from your application without a [traditional language agent](https://github.com/newrelic/node-newrelic).
 
 The Telemetry SDK serves as a foundation for getting open standards based telemetry data like [Open Census](https://opencensus.io/), [Open Tracing](https://opentracing.io/), and [Open Telemetry](https://opentelemetry.io/) into New Relic.  If you're building exporters or tracers based on these standards, you've come to the right place.
 
@@ -11,7 +17,7 @@ The Telemetry SDK serves as a foundation for getting open standards based teleme
 ### Prerequisites
 
 - A New Relic Insights API Key
-- A NodeJS 10+ Runtime
+- A Node.js 10+ Runtime
 
 To get started with the Telemetry SDK, you'll need a New Relic Insert API key. If you need help finding or generating this (or any) API key, [our docs have you covered](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys).
 
@@ -225,5 +231,3 @@ To [all contributors](<https://github.com/newrelic/newrelic-telemetry-sdk-node/g
 ## License
 
 `newrelic-telemetry-sdk-node` is licensed under the [Apache 2.0](http://apache.org/licenses/LICENSE-2.0.txt) License.
-
-
