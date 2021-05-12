@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.4.1 (2021-05-12)
+* The logs client client options, batch and log models can be referenced with telemetry.logs.*.
+* Added deprecation warning to top of README.md.
+* Increased wait time for log-client integration test verification to 3 seconds to mitigate intermittent test failures.
+
 ## 0.4.0 (2021-04-15)
 * Added support for the Event API. (Thank you @kolanos for the contribution)
 * Added support for the New Relic Log API. (Thank you @MattWhelan for the contribution)
