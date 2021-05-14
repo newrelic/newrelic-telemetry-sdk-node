@@ -42,4 +42,8 @@ export class LogBatch {
   public append(message: LogMessage): void {
     this.logs.push(message)
   }
+
+  public getBatchSize(): number {
+    return this.logs.length
+  }
 }
