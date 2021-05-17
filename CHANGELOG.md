@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.4.2 (2021-05-17)
+* Added batchSize interface to LogBatch class.
+
 ## 0.4.1 (2021-05-12)
 * The logs client client options, batch and log models can be referenced with telemetry.logs.*.
 * Added deprecation warning to top of README.md.
