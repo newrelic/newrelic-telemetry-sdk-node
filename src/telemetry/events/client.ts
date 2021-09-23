@@ -2,7 +2,7 @@ import { BaseClient, SendDataOptions, SendCallback, RequestData } from '../base-
 import { EventBatch } from './batch'
 import { Logger} from '../../common'
 
-const EVENT_HOST = 'insights-collector.nr-data.net'
+const EVENT_HOST = 'insights-collector.newrelic.com'
 const EVENT_PORT = 443
 const EVENT_PATH = '/v1/accounts/events'
 const INVALID_KEY_MESSAGE = 'A valid key must be provided for inserting events.'
