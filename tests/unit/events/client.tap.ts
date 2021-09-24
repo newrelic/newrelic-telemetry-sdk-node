@@ -5,7 +5,7 @@ import { EventClient, EventClientOptions } from '../../../src/telemetry/events/c
 test('EventClient', (t): void => {
   t.test('Should use default host and port when not specified in constructor',
     (t): void => {
-      const EVENT_HOST = 'insights-collector.nr-data.net'
+      const EVENT_HOST = 'insights-collector.newrelic.com'
       const EVENT_PORT = 443
 
       const opts: EventClientOptions = {
