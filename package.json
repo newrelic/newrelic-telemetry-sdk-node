@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint 'index.ts' 'src/**/*.ts' 'tests/**/*.ts'",
-    "prepare": "husky install",
+    "prepare": "npm run build && husky install",
     "unit": "ts-node ./node_modules/.bin/tape tests/unit/*.tap.ts tests/unit/**/*.tap.ts",
     "integration": "ts-node ./node_modules/.bin/tape tests/integration/**/*.tap.ts",
     "server-integration": "ts-node ./node_modules/.bin/tape tests/server-integration/**/*.tap.ts",
