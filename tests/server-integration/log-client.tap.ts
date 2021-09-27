@@ -6,7 +6,8 @@ import { OutgoingHttpHeaders, IncomingMessage } from 'http'
 import {Log, LogBatch, LogClient, LogClientOptions} from '../../src/telemetry/logs'
 
 
-const LOGGING_DELAY_MS = 3000
+const LOG_VERIFICATION_DELAY_MS = 5000
+const LOG_VERIFICATION_MAX_ATTEMPTS = 5
 
 const logConfig: LogClientOptions = {
   apiKey: process.env.TEST_API_KEY,
@@ -15,7 +16,76 @@ const logConfig: LogClientOptions = {
 
 interface LogEvent { [key: string]: string }
 
-export function verifyLogs(
+
+test('Log Client - Server Integration Tests', (t): void => {
+  t.ok(logConfig.apiKey, 'TEST_API_KEY must be configured for tests')
+
+  t.test('Should send batch of logs', (t): void => {
+    const testId = 'test-' + uuidv4()
+    const attributes = {
+      'name': 'commonName',
+      'service.name': 'node-sdk-test-entity',
+      'testId': testId
+    }
+
+    const log1Ts = Date.now() - 10
+    const log1 = new Log(
+      'log1',
+      log1Ts,
+      {
+        aProp: 'someValue',
+      })
+
+    const log2Ts = log1Ts + 1
+    const log2 = new Log(
+      'log2',
+      log2Ts,
+      {
+        anotherProp: 'anotherValue',
+      })
+
+    const batch = new LogBatch([log1, log2], attributes)
+
+    const client = new LogClient(logConfig)
+
+    const verifyResults = (logEvents?: LogEvent[]): void => {
+      t.ok(logEvents, 'Falsy logEvents')
+      t.equal(logEvents.length, 2, 'unexpected log event count')
+
+      let event1 = logEvents[0]
+      let event2 = logEvents[1]
+      if (event1.timestamp > event2.timestamp) {
+        const temp = event2
+        event2 = event1
+        event1 = temp
+      }
+
+      t.equal(event1.timestamp, log1Ts, 'event 1 timestamp')
+      t.equal(event1.name, 'commonName', 'event 1 name')
+      t.equal(event1.aProp, 'someValue',
+        'event 1 aProp')
+
+      t.equal(event2.timestamp, log2Ts, 'event 2 timestamp')
+      t.equal(event2.name, 'commonName', 'event 2 name')
+      t.equal(event2.anotherProp, 'anotherValue',
+        'event 2 anotherProp')
+
+      t.end()
+    }
+
+    client.send(batch, (err, res, body): void => {
+      t.error(err)
+      t.ok(res)
+      t.ok(body)
+
+      t.equal(res.statusCode, 202)
+      tryGetLogEvents(t, testId, verifyResults)
+    })
+  })
+})
+
+
+function tryGetLogEvents(
   t: test.Test,
   testId: string,
   callback: (logEvents?: LogEvent[]) => void
@@ -30,14 +100,36 @@ export function verifyLogs(
     'TEST_QUERY_KEY must be configured to verify NRIntegrationError events.'
   )
 
-  // Sometimes seems takes > 500ms for errors to show up in API query.
-  setTimeout((): void => {
-    findLog(testId, (error, logEvents?: LogEvent[]): void => {
-      t.error(error, 'should not error grabbing results')
+  let attempts = 0
+  let logEventsFound: LogEvent[] = null
 
-      callback(logEvents)
-    })
-  }, LOGGING_DELAY_MS)
+  function getEvents(): void {
+    if (attempts < LOG_VERIFICATION_MAX_ATTEMPTS) {
+      attempts++
+
+      t.comment(`getEvents attempt #: ${attempts}`)
+      findLog(testId, (error, logEvents: LogEvent[]): void => {
+        if (error) {
+          t.end(error)
+          return
+        }
+
+        logEventsFound = logEvents
+
+        // TODO: replace with expected count
+        if (logEvents.length < 2) {
+          setTimeout(getEvents, LOG_VERIFICATION_DELAY_MS)
+        } else {
+          callback(logEvents)
+        }
+      })
+    } else {
+      t.comment(`Hit max attempts: ${LOG_VERIFICATION_MAX_ATTEMPTS}`)
+      callback(logEventsFound)
+    }
+  }
+
+  setTimeout(getEvents, LOG_VERIFICATION_DELAY_MS)
 }
 
 function findLog(
@@ -100,69 +192,3 @@ function findLog(
 
   req.end()
 }
-
-test('Log Client - Server Integration Tests', (t): void => {
-  t.ok(logConfig.apiKey, 'TEST_API_KEY must be configured for tests')
-
-  t.test('Should send batch of logs', (t): void => {
-    const testId = 'test-' + uuidv4()
-    const attributes = {
-      'name': 'commonName',
-      'service.name': 'node-sdk-test-entity',
-      'testId': testId
-    }
-
-    const log1Ts = Date.now() - 10
-    const log1 = new Log(
-      'log1',
-      log1Ts,
-      {
-        aProp: 'someValue',
-      })
-
-    const log2Ts = log1Ts + 1
-    const log2 = new Log(
-      'log2',
-      log2Ts,
-      {
-        anotherProp: 'anotherValue',
-      })
-
-    const batch = new LogBatch([log1, log2], attributes)
-
-    const client = new LogClient(logConfig)
-
-    const resultAssertions = (logEvents?: LogEvent[]): void => {
-      t.ok(logEvents, 'Falsy logEvents')
-      t.equal(logEvents.length, 2, 'unexpected log event count')
-
-      let event1 = logEvents[0]
-      let event2 = logEvents[1]
-      if (event1.timestamp > event2.timestamp) {
-        const temp = event2
-        event2 = event1
-        event1 = temp
-      }
-
-      t.equal(event1.timestamp, log1Ts, 'event 1 timestamp')
-      t.equal(event1.name, 'commonName', 'event 1 name')
-      t.equal(event1.aProp, 'someValue',
-        'event 1 aProp')
-
-      t.equal(event2.timestamp, log2Ts, 'event 2 timestamp')
-      t.equal(event2.name, 'commonName', 'event 2 name')
-      t.equal(event2.anotherProp, 'anotherValue',
-        'event 2 anotherProp')
-
-      t.end()
-    }
-    client.send(batch, (err, res, body): void => {
-      t.error(err)
-      t.ok(res)
-      t.ok(body)
-
-      t.equal(res.statusCode, 202)
-      verifyLogs(t, testId, resultAssertions)
-    })
-  })
-})
