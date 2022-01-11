@@ -1,3 +1,9 @@
+### v0.6.0 (2022-01-11)
+
+* Added workflow to automate preparing release notes by reusing the newrelic/node-newrelic/.github/workflows/prep-release.yml@main workflow from agent repository.
+
+* Added job to automatically add issues/pr to Node.js Engineering board
+
 # CHANGELOG
 
 ## 0.5.0 (2021-09-27)
