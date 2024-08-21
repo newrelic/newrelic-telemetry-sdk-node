@@ -1,4 +1,5 @@
-_**In the next 3-6 months, we plan to EOL the New Relic Node.js Telemetry SDK. If you are using the Telemetry SDK to send OpenTelemetry data to New Relic, we recommend using the OpenTelemetry Collector with the New Relic Exporter as an alternative. You can find an details in the quick start [here](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-quick-start/).**_
+# Archival Notice
+As of 2024-08-21 we are archiving the New Relic Node.js Telemetry SDK project. Please explore the [option to use OpenTelemetry](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-setup/) as an alternative to send Node.js telemetry data to New Relic.
 
 <br />
 <br />
